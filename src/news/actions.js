@@ -22,5 +22,5 @@ export default {
     },
     getArticle(context, payload) {
         return context.state.article[payload];
-    },
+    }
 }

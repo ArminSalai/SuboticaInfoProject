@@ -8,7 +8,7 @@
 		<h1>{{ title }}</h1>
 		<p>{{ date }}</p>
 		<hr />
-		<p class="lead">
+		<p class="lead indented">
 			{{ desc }}
 		</p>
 	</div>

@@ -39,4 +39,8 @@ export default {
 router-view {
   text-decoration: none;
 }
+
+.indented {
+  white-space: break-spaces;
+}
 </style>
