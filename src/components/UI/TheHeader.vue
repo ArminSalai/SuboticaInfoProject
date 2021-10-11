@@ -4,7 +4,7 @@
 			<router-link to="/main" class="navbar-brand"><img src="../../assets/logo.png" /></router-link>
 			<ul class="navbar-nav ms-3 me-auto">
 				<li class="nav-item">
-					<a class="nav-link h5 pb-0 mb-0 text-danger" role="button">Poslednje vesti</a>
+					<router-link to="/latest" class="nav-link h5 pb-0 mb-0 text-danger" role="button">Poslednje vesti</router-link>
 				</li>
         <li class="nav-item">
 					<a class="nav-link h5 pb-0 mb-0 text-danger ms-3" role="button">Sport</a>

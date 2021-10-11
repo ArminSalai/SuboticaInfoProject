@@ -43,4 +43,16 @@ router-view {
 .indented {
   white-space: break-spaces;
 }
+
+.center-title {
+  position: absolute; 
+  left: 0; 
+  right: 0; 
+  margin-left: auto; 
+  margin-right: auto;
+  width: max-content;
+  max-width: 90%;
+  text-align: center;
+  text-decoration: none;
+}
 </style>

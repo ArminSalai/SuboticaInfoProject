@@ -3,17 +3,18 @@ const axios = require('axios').default;
 export default {
     async setLatest(context, payload) {
         try {
-            const response = await axios.get('https://www.subotica.info/restful-latest');
             let articles = [];
             if (String(payload) == "latest") {
+                const response = await axios.get('https://www.subotica.info/restful-latest');
                 for (let i = 0; i < 6; i++)
                     articles.push(response.data.nodes[i].node);
             }
             else {
+                const response = await axios.get(`https://www.subotica.info/restful-latest?page=${payload}`);
                 let all = [];
-                for (let i = 0; i < response.data.nodes.length - 1; i++)
+                for (let i = 0; i < response.data.nodes.length; i++)
                     all.push(response.data.nodes[i].node);
-                articles.push(all.find(node => node.Nid == payload));
+                articles = all;
             }
             context.commit('setArticle', articles);
         } catch (error) {
@@ -52,6 +53,20 @@ export default {
         }
         catch (error) {
             console.error(error);
+        }
+    },
+    async setCategory(context, payload) {
+        const response = await axios.get(`https://www.subotica.info/restful-${payload.category}`);
+        if (payload.isLatest == 'latest') {
+            let results = response.data.nodes[0].node;
+            context.commit('addArticle', results);
+        }
+        else {
+            let results = [];
+            for (const data of response.data.nodes) {
+                results.push(data.node);
+            }
+            context.commit('setArticle', results);
         }
     }
 }

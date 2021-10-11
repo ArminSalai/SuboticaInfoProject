@@ -18,7 +18,8 @@
           </button>
         </form>
       </div>
-      <ul class="p-0 mt-5 list-unstyled">
+      <h3 v-if="articles.length == 0" class="mt-4">No Results Found</h3>
+      <ul v-else class="p-0 mt-5 list-unstyled">
         <ResultItem
           v-for="article in articles"
           :key="article.Nid"
