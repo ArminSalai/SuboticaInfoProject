@@ -14,7 +14,15 @@
             :date="latestItem['Post date']"
           />
         </ul>
-        
+
+        <div class="input-group mb-3">
+          <button class="btn btn-outline-secondary" @click="prev" type="button">
+            Prethodna
+          </button>
+          <button class="btn btn-outline-secondary" @click="next" type="button">
+            Iduća
+          </button>
+        </div>
       </div>
     </section>
   </div>
@@ -24,7 +32,7 @@
 import TheHeader from "../UI/TheHeader.vue";
 import LatestItem from "../latest/LatestItem.vue";
 import { useStore } from "vuex";
-import { computed, onMounted } from "vue";
+import { ref, computed, onMounted } from "vue";
 
 export default {
   components: {
@@ -34,20 +42,34 @@ export default {
   setup() {
     const store = useStore();
 
-    async function getLatest(page) {
-      await store.dispatch("setLatest", page);
-    }
+    const page = ref(0);
 
     const news = computed(() => {
       return store.getters.getArticles;
     });
+    
+    async function prev() {
+      page.value--;
+      await store.dispatch("setLatest", page);
+    }
+
+    async function next() {
+      page.value++;
+      await store.dispatch("setLatest", page);
+    }
+
+    async function getLatest(page) {
+      await store.dispatch("setLatest", page);
+    }
 
     onMounted(async function () {
-      await getLatest(0);
+      await getLatest(page.value);
     });
 
     return {
       news,
+      prev,
+      next,
     };
   },
 };
