@@ -22,10 +22,10 @@ export default {
 		const store = useStore();
         const current = ref(0);
 		async function getLatestArticles() {
-			await store.dispatch("setArticle", "latest");
+			await store.dispatch("setLatest", "latest");
 		}
 		const latestArticles = computed(() => {
-			return store.getters.getLatestArticles;
+			return store.getters.getArticles;
 		});
 
         

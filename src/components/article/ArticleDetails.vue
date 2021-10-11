@@ -33,15 +33,14 @@ export default {
 		}
 
 		const article = computed(() => {
-			return store.getters.getLatestArticles[0];
+			return store.getters.getArticles;
 		});
 
-		const category = computed(() => article.value.Nid);
+		const category = computed(() => article.value.Kategorija);
 		const title = computed(() => article.value.Naslov);
 		const desc = computed(() => article.value["Sadrzaj clanka"]);
 		const image = computed(() => article.value["Vodeca slika"]);
 		const date = computed(() => article.value["Post date"]);
-    console.log(category);
 
 		onMounted(function () {
 			getArticle();

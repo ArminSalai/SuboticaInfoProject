@@ -6,7 +6,8 @@ import mutations from './mutations.js';
 const store = createStore({
     state() {
         return {
-            article: [{}]
+            article: [{}],
+            searchTerm: ''
         }
     },
     getters,

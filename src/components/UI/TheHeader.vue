@@ -19,12 +19,13 @@
 					<a class="nav-link h5 pb-0 mb-0 text-danger ms-3" role="button">Više vesti</a>
 				</li>
 			</ul>
-			<form class="d-flex">
+			<form @submit.prevent="search" class="d-flex">
 				<input
 					class="form-control me-2 pb-1"
 					type="search"
 					placeholder="Search"
 					aria-label="Search"
+					v-model="searchTerm"
 				/>
 				<button class="btn btn-outline-danger pb-1" type="submit">
 					Search
@@ -33,3 +34,26 @@
 		</div>
 	</nav>
 </template>
+
+<script>
+import { ref } from 'vue';
+import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
+
+export default {
+	setup() {
+		const searchTerm = ref('');
+		const store = useStore();
+		const router = useRouter();
+		function search() {
+			router.push('/search');
+			store.dispatch('setTerm', searchTerm);
+		}
+
+		return {
+			search,
+			searchTerm
+		}
+	},
+}
+</script>
