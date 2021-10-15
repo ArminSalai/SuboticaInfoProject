@@ -1,6 +1,6 @@
 <template>
+  <TheHeader />
   <div class="container">
-    <TheHeader />
     <h1 class="mt-5 mb-3">Search Results:</h1>
     <div class="row d-flex flex-row">
       <label for="search">Search terms: </label>
@@ -59,6 +59,7 @@ export default {
     });
 
     onMounted(async function () {
+      store.dispatch("Reset");
       await search();
     });
 

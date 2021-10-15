@@ -21,10 +21,29 @@ export default {
             console.error(error);
         }
     },
+    async loadCategoryItems(context, payload) {
+        try {
+            let articles = [];
+            const response = await axios.get(`https://www.subotica.info/restful-${payload.category}?page=${payload.page}`);
+            for (let i = 0; i < response.data.nodes.length; i++)
+                articles.push(response.data.nodes[i].node);
+            context.commit('addArticle', articles);
+        } catch (error) {
+            console.error(error);
+        }
+    },
     async setArticle(context, payload) {
         try {
             const response = await axios.get(`https://www.subotica.info/restful-article/${payload}`);
-            let data = response.data.nodes[0].node;
+            let data = null;
+            if (response.data.nodes[0] !== undefined) {
+                data = response.data.nodes[0].node;
+            }
+            else {
+                const resp = await axios.get('https://www.subotica.info/restful-latest');
+                let all = resp.data.nodes;
+                data = all.find(node => node.node.Nid === payload).node;
+            }
             context.commit('setArticle', data);
         }
         catch (error) {
@@ -59,14 +78,17 @@ export default {
         const response = await axios.get(`https://www.subotica.info/restful-${payload.category}`);
         if (payload.isLatest == 'latest') {
             let results = response.data.nodes[0].node;
-            context.commit('addArticle', results);
+            context.commit('addAdditional', results);
         }
         else {
             let results = [];
             for (const data of response.data.nodes) {
                 results.push(data.node);
             }
-            context.commit('setArticle', results);
+            context.commit('setAdditional', results);
         }
+    },
+    Reset(context) {
+        context.commit('reset');
     }
 }

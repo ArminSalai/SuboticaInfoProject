@@ -2,7 +2,7 @@
   <li class="border border-secondary rounded-3 p-3 my-3">
     <div class="row">
       <div class="col-3">
-        <img :src="image" class="w-100 rounded-2" alt="No Image Provided" />
+        <img :src="image" class="w-100 rounded-2 listImg" alt="No Image Provided" />
       </div>
       <div class="col-7 d-flex flex-column">
         <h3><router-link :to="'/details/' + index" class="text-decoration-none text-dark">{{ title }}</router-link></h3>

@@ -74,8 +74,8 @@ export default {
     }
 
     const zajednica = computed(() => {
-      if (store.getters.getArticles[6]) {
-        return store.getters.getArticles[6];
+      if (store.getters.getAdditionals[0]) {
+        return store.getters.getAdditionals[0];
       } else return "null";
     });
 
@@ -87,8 +87,8 @@ export default {
     }
 
     const sport = computed(() => {
-      if (store.getters.getArticles[7]) {
-        return store.getters.getArticles[7];
+      if (store.getters.getAdditionals[1]) {
+        return store.getters.getAdditionals[1];
       } else return "null";
     });
 
@@ -100,12 +100,13 @@ export default {
     }
 
     const kultura = computed(() => {
-      if (store.getters.getArticles[8]) {
-        return store.getters.getArticles[8];
+      if (store.getters.getAdditionals[2]) {
+        return store.getters.getAdditionals[2];
       } else return "null";
     });
 
     onMounted(async function () {
+      store.dispatch("Reset");
       await getLatestArticles();
       current.value = latestArticles.value.find(
         (node) => node.Nid == Math.max(node.Nid)

@@ -23,6 +23,10 @@ export default {
   -webkit-backdrop-filter: blur(8px);
 }
 
+.bg-news-title:hover {
+  background: #101010f0;
+}
+
 .carousel-height {
   width: 100%;
   height: 50vh;
@@ -54,5 +58,15 @@ router-view {
   max-width: 90%;
   text-align: center;
   text-decoration: none;
+}
+
+.listImg {
+  height: 15rem;
+  object-fit: cover;
+}
+
+.categImg {
+  height: 20rem;
+  object-fit: cover;
 }
 </style>

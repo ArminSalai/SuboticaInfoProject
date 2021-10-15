@@ -7,10 +7,10 @@
 					<router-link to="/latest" class="nav-link h5 pb-0 mb-0 text-danger" role="button">Poslednje vesti</router-link>
 				</li>
         <li class="nav-item">
-					<a class="nav-link h5 pb-0 mb-0 text-danger ms-3" role="button">Sport</a>
+					<router-link to="/sport" class="nav-link h5 pb-0 mb-0 text-danger ms-3" role="button">Sport</router-link>
 				</li>
         <li class="nav-item">
-					<a class="nav-link h5 pb-0 mb-0 text-danger ms-3" role="button">Kultura</a>
+					<router-link to="/kultura" class="nav-link h5 pb-0 mb-0 text-danger ms-3" role="button">Kultura</router-link >
 				</li>
         <li class="nav-item">
 					<a class="nav-link h5 pb-0 mb-0 text-danger ms-3" role="button">Najava</a>
