@@ -13,7 +13,7 @@
 					<router-link to="/kultura" class="nav-link h5 pb-0 mb-0 text-danger ms-3" role="button">Kultura</router-link >
 				</li>
         <li class="nav-item">
-					<a class="nav-link h5 pb-0 mb-0 text-danger ms-3" role="button">Najava</a>
+					<router-link to="/najava" class="nav-link h5 pb-0 mb-0 text-danger ms-3" role="button">Najava</router-link>
 				</li>
         <li class="nav-item">
 					<a class="nav-link h5 pb-0 mb-0 text-danger ms-3" role="button">Više vesti</a>

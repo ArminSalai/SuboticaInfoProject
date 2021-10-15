@@ -7,8 +7,10 @@ const store = createStore({
     state() {
         return {
             article: [],
-            additionals: [],
-            searchTerm: ''
+            sports: [],
+            cultures: [],
+            searchTerm: '',
+            movieDays: []
         }
     },
     getters,

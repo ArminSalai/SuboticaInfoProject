@@ -55,7 +55,7 @@
 
 <script>
 import TheHeader from "../UI/TheHeader.vue";
-import ResultItem from "../search/ResultItem.vue"
+import ResultItem from "../results/ResultItem.vue"
 import { useStore } from "vuex";
 import { ref, computed, onMounted } from "vue";
 import { gsap } from "gsap";

@@ -44,18 +44,17 @@ export default {
   setup() {
     const store = useStore();
     const sports = computed(() => {
-      return store.getters.getAdditionals;
+      return store.getters.getSports;
     });
 
     const desc = computed(() => {
-      return shortenDesc(sports.value[0]["Sadrzaj clanka"], 150);
+      return shortenDesc(sports.value["Sadrzaj clanka"], 150);
     });
 
     onMounted(async function () {
       store.dispatch("Reset");
-      await store.dispatch("setCategory", {
-        category: "sport",
-      });
+      await store.dispatch("setSport");
+      console.log(store.getters.getSports);
     });
 
     return {

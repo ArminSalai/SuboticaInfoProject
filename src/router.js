@@ -5,7 +5,8 @@ import SearchResults from '../src/components/pages/SearchResults.vue';
 import LatestList from '../src/components/pages/LatestList.vue';
 import SportLatest from '../src/components/pages/SportLatest.vue';
 import KulturaLatest from '../src/components/pages/KulturaLatest.vue';
-import CategoryAll from '../src/components/pages/CategoryAll.vue';
+import SportList from '../src/components/sport/SportList.vue';
+import EventAnns from '../src/components/pages/EventAnns.vue';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -35,8 +36,12 @@ const router = createRouter({
       component: KulturaLatest
     },
     {
-      path: '/kategorija/:Category/sve',
-      component: CategoryAll
+      path: '/kategorija/sport/sve',
+      component: SportList
+    },
+    {
+      path: '/najava',
+      component: EventAnns
     },
     {
       path: '/',

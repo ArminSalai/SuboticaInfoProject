@@ -21,13 +21,11 @@ export default {
             console.error(error);
         }
     },
-    async loadCategoryItems(context, payload) {
+    async loadSportItems(context, payload) {
         try {
-            let articles = [];
-            const response = await axios.get(`https://www.subotica.info/restful-${payload.category}?page=${payload.page}`);
+            const response = await axios.get(`https://www.subotica.info/restful-sport?page=${payload}`);
             for (let i = 0; i < response.data.nodes.length; i++)
-                articles.push(response.data.nodes[i].node);
-            context.commit('addArticle', articles);
+                context.commit('addSport', response.data.nodes[i].node);
         } catch (error) {
             console.error(error);
         }
@@ -74,21 +72,32 @@ export default {
             console.error(error);
         }
     },
-    async setCategory(context, payload) {
-        const response = await axios.get(`https://www.subotica.info/restful-${payload.category}`);
-        if (payload.isLatest == 'latest') {
+    async setSport(context, payload) {
+        const response = await axios.get(`https://www.subotica.info/restful-sport`);
+        if (payload == 'latest') {
+            context.commit('addSport', response.data.nodes[0].node);
+        }
+        else {
+            for (const data of response.data.nodes) {
+                context.commit('addSport', data.node);
+            }
+        }
+    },
+    async setCultures(context, payload) {
+        const response = await axios.get(`https://www.subotica.info/restful-kultura`);
+        if (payload == 'latest') {
             let results = response.data.nodes[0].node;
-            context.commit('addAdditional', results);
+            context.commit('addCultures', results);
         }
         else {
             let results = [];
             for (const data of response.data.nodes) {
                 results.push(data.node);
             }
-            context.commit('setAdditional', results);
+            context.commit('addCultures', results);
         }
     },
     Reset(context) {
         context.commit('reset');
-    }
+    },
 }

@@ -8,15 +8,24 @@ export default {
     setTerm(state, payload) {
         state.searchTerm = payload;
     },
-    addAdditional(state, payload) {
-        state.additionals.push(payload);
+    addSport(state, payload) {
+        state.sports.push(payload);
+    },
+    addCultures(state, payload) {
+        state.cultures.push(payload);
     },
     setAdditional(state, payload) {
         state.additionals = payload;
+    },
+    setMovieDays(state, payload) {
+        state.movieDays = payload;
     },
     reset(state) {
         state.article = [];
         state.additionals = [];
         state.searchTerm = '';
-    }
+        state.movieDays = [];
+        state.sports = [];
+        state.cultures = [];
+    },
 }

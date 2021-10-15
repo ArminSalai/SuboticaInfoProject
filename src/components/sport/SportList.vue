@@ -1,7 +1,7 @@
 <template>
   <TheHeader />
   <div class="container">
-    <h1 class="mt-5 mb-3">{{ category.toUpperCase() }}</h1>
+    <h1 class="mt-5 mb-3">Sport</h1>
     <div class="row d-flex flex-row">
       <ul class="p-0 mt-5 list-unstyled">
         <ResultItem
@@ -20,8 +20,7 @@
 
 <script>
 import TheHeader from "../UI/TheHeader.vue";
-import ResultItem from "../search/ResultItem.vue";
-import { useRoute } from "vue-router";
+import ResultItem from "../results/ResultItem.vue";
 import { useStore } from "vuex";
 import { ref, computed, onMounted, onBeforeUnmount } from "vue";
 import { gsap } from "gsap";
@@ -35,12 +34,10 @@ export default {
   setup() {
     gsap.registerPlugin(ScrollToPlugin);
     const store = useStore();
-    const route = useRoute();
-    const category = route.params.Category;
     const page = ref(0);
     const wait = ref(false);
     const articles = computed(() => {
-      return store.getters.getArticles;
+      return store.getters.getSports;
     });
 
     async function load() {
@@ -51,11 +48,8 @@ export default {
       if (scrollPercent > 0.9 && !wait.value) {
         page.value++;
         wait.value = true;
-        await store.dispatch("loadCategoryItems", {
-          category: category,
-          page: page.value,
-        });
-      wait.value = false;
+        await store.dispatch("loadSportItems", page.value);
+        wait.value = false;
       }
     }
 
@@ -66,14 +60,10 @@ export default {
     onMounted(async function () {
       window.addEventListener("scroll", load);
       store.dispatch("Reset");
-      await store.dispatch("loadCategoryItems", {
-        category: category,
-        page: page.value,
-      });
+      await store.dispatch("loadSportItems", page.value);
     });
 
     return {
-      category,
       articles,
       load,
     };
