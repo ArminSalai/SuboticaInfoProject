@@ -11,8 +11,20 @@ export default {
             })
         });
 
+        
         const data = await response.json();
+        
+        const additional = await fetch('https://subotica-info-5ee5a-default-rtdb.europe-west1.firebasedatabase.app/users.json', {
+            method: 'POST',
+            body: JSON.stringify({
+                userToken: data.idToken,
+                userId: data.localId,
+                username: payload.username
+            })
+        });
 
+        const additionalData = await additional.json();
+        
         if (!response.ok) {
             console.log(data)
             const error = new Error(data.message || 'Failed to load');
@@ -25,6 +37,7 @@ export default {
         localStorage.setItem('token', data.idToken);
         localStorage.setItem('userId', data.localId);
         localStorage.setItem('tokenExpiration', expirationDate);
+        localStorage.setItem('userName', additionalData.username);
 
         timer = setTimeout(function () {
             context.dispatch('logout');

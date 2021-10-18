@@ -8,6 +8,15 @@
     >
       <div class="row d-flex">
         <div class="col-12">
+          <label class="mt-2 lead" for="username">Korisničko ime</label>
+          <input
+            v-model="username"
+            class="form-control pt-2"
+            type="text"
+            name="username"
+            id="username"
+            placeholder="Nemanja1234"
+          /><br />
           <label class="mt-2 lead" for="email">Imejl</label>
           <input
             v-model="email"
@@ -61,12 +70,14 @@ export default {
     const email =  ref("");
     const pass = ref("");
     const passConfirm = ref("");
+    const username = ref("");
 
     function RegisterUser() {
       if(email.value.includes('@') && pass.value.length > 6 && pass.value == passConfirm.value) {
         store.dispatch('register', {
           email: email.value,
-          password: pass.value
+          password: pass.value,
+          username: username.value
         });
         router.push('/main');
       }
@@ -79,7 +90,8 @@ export default {
       RegisterUser,
       email,
       pass,
-      passConfirm
+      passConfirm,
+      username
     };
   },
 };
