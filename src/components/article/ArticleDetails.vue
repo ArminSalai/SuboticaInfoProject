@@ -26,24 +26,59 @@
       Fotograf: <span class="fw-light">{{ fotograf }}</span>
     </p>
   </div>
-  <TheFooter/>
+  <div class="container-fluid w-75">
+    <form @submit.prevent class="bg-dark text-light p-3">
+      <div class="row">
+        <div class="col-2 d-flex justify-content-center align-items-center">
+          <span class="bg-danger rounded-circle profilePic"></span>
+        </div>
+        <div class="col-8">
+          <label for="comment" class="mb-1 text-secondary">Kommentar:</label>
+          <textarea
+            v-model="comment"
+            name="comment"
+            id="comment"
+            rows="2"
+            class="form-control"
+          ></textarea>
+        </div>
+        <div class="col d-flex align-items-end">
+          <button class="btn btn-danger text-light pt-2" @click="postComment">
+            Poslaj
+          </button>
+        </div>
+      </div>
+    </form>
+    <ul class="bg-dark list-unstyled">
+      <CommentItem
+        v-for="comm in comments"
+        :key="comm.id"
+        :username="comm.user"
+        :comment="comm.comment"
+      />
+    </ul>
+  </div>
+  <TheFooter />
 </template>
 
 <script>
 import { useStore } from "vuex";
 import { useRoute } from "vue-router";
-import { onMounted, computed } from "vue";
+import { ref, onMounted, computed } from "vue";
 import TheHeader from "../UI/TheHeader.vue";
+import CommentItem from "../article/CommentItem.vue";
 import TheFooter from "../UI/TheFooter.vue";
 
 export default {
   components: {
     TheHeader,
-    TheFooter
+    TheFooter,
+    CommentItem,
   },
   setup() {
     const store = useStore();
     const route = useRoute();
+    const comment = ref("");
 
     async function getArticle() {
       await store.dispatch("setArticle", route.params.Nid);
@@ -80,8 +115,21 @@ export default {
     const autor = computed(() => article.value["Autor teksta"]);
     const fotograf = computed(() => article.value["Fotograf"]);
 
-    onMounted(function () {
-      getArticle();
+    const comments = computed(() => {
+      return store.getters.getComments;
+    });
+
+    async function postComment() {
+      await store.dispatch("comment", {
+        comment: comment.value,
+        articleNid: article.value.Nid,
+      });
+      store.dispatch("loadComments", article.value.Nid);
+    }
+
+    onMounted(async function () {
+      await getArticle();
+      await store.dispatch("loadComments", article.value.Nid);
     });
 
     return {
@@ -94,6 +142,9 @@ export default {
       licnosti,
       autor,
       fotograf,
+      postComment,
+      comment,
+      comments,
     };
   },
 };

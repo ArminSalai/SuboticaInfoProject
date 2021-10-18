@@ -5,8 +5,13 @@
 <script>
 
 export default {
-  name: 'App'
+  name: 'App',
+  created() {
+    this.$store.dispatch('autoLogin');
+  }
 }
+
+
 </script>
 
 <style>
@@ -72,6 +77,12 @@ router-view {
 
 .w-caru {
   width: 50%;
+}
+
+.profilePic {
+  display: block;
+  width: 5rem !important;
+  height: 5rem !important;
 }
 
 @media (max-width: 1199.98px) {

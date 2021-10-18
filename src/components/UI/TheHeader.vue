@@ -57,17 +57,48 @@
             >
           </li>
         </ul>
-        <form @submit.prevent="search" class="d-flex">
-          <input
-            class="form-control me-2 pb-1"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-            v-model="searchTerm"
-          />
-          <button class="btn btn-outline-danger pb-1" type="submit">
-            Search
-          </button>
+        <form @submit.prevent="search">
+          <div v-if="!isLoggedIn">
+            <button
+              class="btn btn-outline-secondary bg-light text-danger mb-2 pb-1"
+              @click.prevent="login"
+            >
+              Login
+            </button>
+            <button
+              class="
+                btn btn-outline-secondary
+                bg-light
+                text-danger
+                mb-2
+                ms-3
+                pb-1
+              "
+              @click.prevent="register"
+            >
+              Register
+            </button>
+          </div>
+					<div v-else>
+						<button
+              class="btn btn-outline-secondary bg-light text-danger mb-2 pb-1"
+              @click.prevent="logout"
+            >
+              Logout
+            </button>
+					</div>
+          <div class="d-flex">
+            <input
+              class="form-control me-2 pb-1"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+              v-model="searchTerm"
+            />
+            <button class="btn btn-outline-danger pb-1" type="submit">
+              Search
+            </button>
+          </div>
         </form>
       </div>
     </div>
@@ -75,7 +106,7 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 
@@ -89,9 +120,29 @@ export default {
       store.dispatch("setTerm", searchTerm);
     }
 
+		const isLoggedIn = computed(() => {
+			return store.getters.getLoggedIn;
+		})
+
+    function register() {
+      router.push("/register");
+    }
+
+		function login() {
+			router.push('/login');
+		}
+
+		function logout() {
+			store.dispatch('logout');
+		}
+
     return {
       search,
       searchTerm,
+      register,
+			isLoggedIn,
+			login,
+			logout
     };
   },
 };

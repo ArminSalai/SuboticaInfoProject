@@ -8,6 +8,8 @@ import KulturaLatest from '../src/components/pages/KulturaLatest.vue';
 import SportList from '../src/components/categories/SportList.vue';
 import CultureList from '../src/components/categories/CultureList.vue';
 import EventAnns from '../src/components/pages/EventAnns.vue';
+import RegisterPage from '../src/components/user-specific/RegisterPage.vue';
+import LoginPage from '../src/components/user-specific/LoginPage.vue';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -47,6 +49,14 @@ const router = createRouter({
     {
       path: '/najava',
       component: EventAnns
+    },
+    {
+      path: '/register',
+      component: RegisterPage
+    },
+    { 
+      path: '/login',
+      component: LoginPage
     },
     {
       path: '/',
