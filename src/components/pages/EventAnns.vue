@@ -14,11 +14,13 @@
     />
     </u>
   </div>
+    <TheFooter />
 </template>
 
 <script>
 import TheHeader from "../UI/TheHeader.vue";
-import DayItem from "../eventDay/DayItem.vue";
+import TheFooter from "../UI/TheFooter.vue";
+import DayItem from "../najava/DayItem.vue";
 import { useStore } from "vuex";
 import { onMounted, computed } from "vue";
 
@@ -26,17 +28,16 @@ export default {
   components: {
     TheHeader,
     DayItem,
+    TheFooter
   },
   setup() {
     const store = useStore();
     const moives = computed(() => {
-      return store.getters.getAdditionals;
+      return store.getters.getNajava[0];
     });
 
     onMounted(async function () {
-      await store.dispatch("setCategory", {
-        category: "najava",
-      });
+      await store.dispatch("setNajava");
     });
     return {
       moives,

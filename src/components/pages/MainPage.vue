@@ -6,7 +6,7 @@
     </section>
     <section class="bg-dark text-light mt-5">
       <div class="container">
-        <!--<p class="display-2 m-0 pt-5">Zajednica</p>
+        <p class="display-2 m-0 pt-5">Zajednica</p>
         <div class="row justify-content-center">
           <div class="col-7 mt-5 position-relative">
             <img
@@ -16,7 +16,8 @@
             />
 						<h3><router-link :to="'/details/' + zajednica.Nid" class="position-absolute text-light bottom-0 bg-news-title center-title px-3 py-2 mb-3">{{ zajednica.Naslov }}</router-link></h3>
           </div>
-        </div>-->
+        </div>
+        <hr class="mt-5 mx-3">
         <p class="display-2 m-0 pt-5">Sport</p>
         <div class="row justify-content-center">
           <div class="col-7 mt-5 position-relative">
@@ -28,8 +29,9 @@
 						<h3><router-link :to="'/details/' + sport.Nid" class="position-absolute text-light bottom-0 bg-news-title center-title px-3 py-2 mb-3">{{ sport.Naslov }}</router-link></h3>
           </div>
         </div>
-				<!--<p class="display-2 m-0 pt-5">Kultura</p>
-        <div class="row justify-content-center">
+        <hr class="mt-5 mx-3">
+				<p class="display-2 m-0 pt-5">Kultura</p>
+        <div class="row justify-content-center pb-5">
           <div class="col-7 mt-5 position-relative">
             <img
               class="w-100"
@@ -38,14 +40,16 @@
             />
 						<h3><router-link :to="'/details/' + kultura.Nid" class="position-absolute text-light bottom-0 bg-news-title center-title px-3 py-2 mb-3">{{ kultura.Naslov }}</router-link></h3>
           </div>
-        </div>-->
+        </div>
       </div>
     </section>
+    <TheFooter />
   </div>
 </template>
 
 <script>
 import TheHeader from "../UI/TheHeader.vue";
+import TheFooter from "../UI/TheFooter.vue";
 import CarouselMain from "../carousel/CarouselMain.vue";
 import { useStore } from "vuex";
 import { ref, computed, onMounted } from "vue";
@@ -54,6 +58,7 @@ export default {
   components: {
     TheHeader,
     CarouselMain,
+    TheFooter
   },
   setup() {
     const store = useStore();
@@ -66,18 +71,15 @@ export default {
       return store.getters.getArticles;
     });
 
-    /*async function getZajednica() {
-      await store.dispatch("setCategory", {
-        category: "zajednica",
-        isLatest: "latest",
-      });
+    async function getZajednica() {
+      await store.dispatch("setZajednica", "latest");
     }
 
     const zajednica = computed(() => {
-      if (store.getters.getAdditionals[0]) {
-        return store.getters.getAdditionals[0];
+      if (store.getters.getZajednica[0]) {
+        return store.getters.getZajednica[0];
       } else return "null";
-    });*/
+    });
 
     async function getSport() {
       await store.dispatch("setSport", "latest");
@@ -89,18 +91,15 @@ export default {
       } else return "null";
     });
 
-		/*async function getKultura() {
-      await store.dispatch("setCategory", {
-        category: "kultura",
-        isLatest: "latest",
-      });
+		async function getKultura() {
+      await store.dispatch("setCultures", "latest");
     }
 
     const kultura = computed(() => {
-      if (store.getters.getAdditionals[2]) {
-        return store.getters.getAdditionals[2];
+      if (store.getters.getCultures[0]) {
+        return store.getters.getCultures[0];
       } else return "null";
-    });*/
+    });
 
     onMounted(async function () {
       store.dispatch("Reset");
@@ -108,18 +107,17 @@ export default {
       current.value = latestArticles.value.find(
         (node) => node.Nid == Math.max(node.Nid)
       ).Nid;
-			//await getZajednica();
+			await getZajednica();
       await getSport();
-			//await getKultura();
+			await getKultura();
     });
 
     return {
       current,
       latestArticles,
       sport,
-      log
-			//zajednica,
-			//kultura
+			zajednica,
+			kultura
     };
   },
 };

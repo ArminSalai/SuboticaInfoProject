@@ -1,8 +1,12 @@
 <template>
   <TheHeader />
-  <div class="container">
+  <div class="container mb-5">
     <div v-if="sports[0]" class="mt-5">
-      <router-link :to="'/details/' + sports[0].Nid" class="text-decoration-none h2 text-dark">{{ sports[0].Naslov }}</router-link>
+      <router-link
+        :to="'/details/' + sports[0].Nid"
+        class="text-decoration-none h2 text-dark"
+        >{{ sports[0].Naslov }}</router-link
+      >
       <div class="row">
         <img
           :src="sports[0]['Vodeca slika']"
@@ -25,12 +29,18 @@
         :date="sport['Post date']"
       />
     </ul>
-    <router-link to="/kategorija/sport/sve" class="lead mb-5 text-decoration-none text-dark">Ostale vesti</router-link>
+    <router-link
+      to="/kategorija/sport/sve"
+      class="lead mb-5 text-decoration-none text-light bg-danger rounded-2 p-3 pt-4"
+      >Ostale vesti</router-link
+    >
   </div>
+    <TheFooter />
 </template>
 
 <script>
 import TheHeader from "../UI/TheHeader.vue";
+import TheFooter from "../UI/TheFooter.vue";
 import shortenDesc from "../hooks/shortenDesc.js";
 import CategoryItem from "../categories/CategoryItem.vue";
 import { computed, onMounted } from "vue";
@@ -40,6 +50,7 @@ export default {
   components: {
     TheHeader,
     CategoryItem,
+    TheFooter
   },
   setup() {
     const store = useStore();
@@ -48,13 +59,12 @@ export default {
     });
 
     const desc = computed(() => {
-      return shortenDesc(sports.value["Sadrzaj clanka"], 150);
+      return shortenDesc(sports.value[0]["Sadrzaj clanka"], 150);
     });
 
     onMounted(async function () {
       store.dispatch("Reset");
       await store.dispatch("setSport");
-      console.log(store.getters.getSports);
     });
 
     return {

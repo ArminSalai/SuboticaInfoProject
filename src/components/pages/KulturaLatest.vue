@@ -1,7 +1,7 @@
 <template>
   <TheHeader />
-  <div class="container">
-    <div v-if="infos[0]" class="mt-5">
+  <div class="container mb-5">
+    <div v-if="infos && infos[0]" class="mt-5">
       <router-link
         :to="'/details/' + infos[0].Nid"
         class="text-decoration-none h2 text-dark"
@@ -31,14 +31,16 @@
     </ul>
     <router-link
       to="/kategorija/kultura/sve"
-      class="lead mb-5 text-decoration-none text-dark"
+      class="lead mb-5 text-decoration-none text-light bg-danger rounded-2 p-3 pt-4"
       >Ostale vesti</router-link
     >
   </div>
+    <TheFooter />
 </template>
 
 <script>
 import TheHeader from "../UI/TheHeader.vue";
+import TheFooter from "../UI/TheFooter.vue";
 import shortenDesc from "../hooks/shortenDesc.js";
 import CategoryItem from "../categories/CategoryItem.vue";
 import { computed, onMounted } from "vue";
@@ -48,23 +50,21 @@ export default {
   components: {
     TheHeader,
     CategoryItem,
+    TheFooter
   },
   setup() {
     const store = useStore();
     const infos = computed(() => {
-      return store.getters.getAdditionals;
+      return store.getters.getCultures[0];
     });
 
     const desc = computed(() => {
-      console.log(infos.value[0]);
       return shortenDesc(infos.value[0]["Sadrzaj članka"], 150);
     });
 
     onMounted(async function () {
       store.dispatch("Reset");
-      await store.dispatch("setCategory", {
-        category: "kultura",
-      });
+      await store.dispatch("setCultures");
     });
 
     return {

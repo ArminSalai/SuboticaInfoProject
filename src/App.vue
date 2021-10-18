@@ -69,4 +69,25 @@ router-view {
   height: 20rem;
   object-fit: cover;
 }
+
+.w-caru {
+  width: 50%;
+}
+
+@media (max-width: 1199.98px) {
+  .w-caru {
+    width: 100%;
+  }
+}
+
+.footer-title {
+  position: absolute; 
+  left: 0; 
+  right: 0;
+  bottom: 1rem;
+  background: #ccccccc0;
+  margin-left: auto; 
+  margin-right: auto; 
+  width: max-content;
+}
 </style>

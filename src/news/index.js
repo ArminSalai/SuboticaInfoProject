@@ -9,8 +9,10 @@ const store = createStore({
             article: [],
             sports: [],
             cultures: [],
-            searchTerm: '',
-            movieDays: []
+            zajednica: [],
+            najava: [],
+            panoramica: {},
+            searchTerm: ''
         }
     },
     getters,

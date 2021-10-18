@@ -11,8 +11,17 @@ export default {
     addSport(state, payload) {
         state.sports.push(payload);
     },
-    addCultures(state, payload) {
+    addCulture(state, payload) {
         state.cultures.push(payload);
+    },
+    addZajednica(state, payload) {
+        state.zajednica.push(payload);
+    },
+    addNajava(state, payload) {
+        state.najava.push(payload);
+    },
+    addPanoramica(state, payload) {
+        state.panoramica = payload;
     },
     setAdditional(state, payload) {
         state.additionals = payload;

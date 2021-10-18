@@ -1,5 +1,5 @@
 <template>
-  <div class="container w-50">
+  <div class="container w-caru">
     <h1 class="mt-5 py-3 mb-0 ps-4 bg-black text-light">Aktuelno</h1>
     <div class="container-fluid p-0">
       <div

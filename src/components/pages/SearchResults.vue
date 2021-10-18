@@ -32,10 +32,12 @@
       </ul>
     </div>
   </div>
+    <TheFooter />
 </template>
 
 <script>
 import TheHeader from "../UI/TheHeader.vue";
+import TheFooter from "../UI/TheFooter.vue";
 import ResultItem from "../results/ResultItem.vue";
 import { useStore } from "vuex";
 import { ref, onMounted, computed } from "vue";
@@ -44,6 +46,7 @@ export default {
   components: {
     TheHeader,
     ResultItem,
+    TheFooter
   },
   setup() {
     const store = useStore();

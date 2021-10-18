@@ -5,13 +5,19 @@ export default {
     getTerm(state) {
         return state.searchTerm;
     },
-    getAdditionals(state) {
-        return state.additionals;
-    },
     getSports(state) {
         return state.sports;
     },
-    getKultures(state) {
+    getCultures(state) {
         return state.cultures;
+    },
+    getZajednica(state) {
+        return state.zajednica;
+    },
+    getNajava(state) {
+        return state.najava;
+    },
+    getPanoramica(state) {
+        return state.panoramica;
     }
 }

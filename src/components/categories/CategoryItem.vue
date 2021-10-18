@@ -19,7 +19,7 @@ import shortenDesc from "../hooks/shortenDesc.js";
 export default {
   props: ["index", "title", "fullDesc", "image", "date"],
   setup(props) {
-    const desc = shortenDesc(props.fullDesc, 500);
+    const desc = shortenDesc(props.fullDesc, 400);
 
     return {
       desc,

@@ -51,11 +51,13 @@
       </div>
     </section>
   </div>
+    <TheFooter />
 </template>
 
 <script>
 import TheHeader from "../UI/TheHeader.vue";
-import ResultItem from "../results/ResultItem.vue"
+import TheFooter from "../UI/TheFooter.vue";
+import ResultItem from "../results/ResultItem.vue";
 import { useStore } from "vuex";
 import { ref, computed, onMounted } from "vue";
 import { gsap } from "gsap";
@@ -65,6 +67,7 @@ export default {
   components: {
     TheHeader,
     ResultItem,
+    TheFooter
   },
   setup() {
     gsap.registerPlugin(ScrollToPlugin);

@@ -21,15 +21,6 @@ export default {
             console.error(error);
         }
     },
-    async loadSportItems(context, payload) {
-        try {
-            const response = await axios.get(`https://www.subotica.info/restful-sport?page=${payload}`);
-            for (let i = 0; i < response.data.nodes.length; i++)
-                context.commit('addSport', response.data.nodes[i].node);
-        } catch (error) {
-            console.error(error);
-        }
-    },
     async setArticle(context, payload) {
         try {
             const response = await axios.get(`https://www.subotica.info/restful-article/${payload}`);
@@ -72,6 +63,8 @@ export default {
             console.error(error);
         }
     },
+
+
     async setSport(context, payload) {
         const response = await axios.get(`https://www.subotica.info/restful-sport`);
         if (payload == 'latest') {
@@ -86,15 +79,60 @@ export default {
     async setCultures(context, payload) {
         const response = await axios.get(`https://www.subotica.info/restful-kultura`);
         if (payload == 'latest') {
-            let results = response.data.nodes[0].node;
-            context.commit('addCultures', results);
+            context.commit('addCulture', response.data.nodes[0].node);
         }
         else {
             let results = [];
             for (const data of response.data.nodes) {
                 results.push(data.node);
             }
-            context.commit('addCultures', results);
+            context.commit('addCulture', results);
+        }
+    },
+    async setZajednica(context, payload) {
+        const response = await axios.get(`https://www.subotica.info/restful-zajednica`);
+        if (payload == 'latest') {
+            context.commit('addZajednica', response.data.nodes[0].node);
+        }
+        else {
+            let results = [];
+            for (const data of response.data.nodes) {
+                results.push(data.node);
+            }
+            context.commit('addZajednica', results);
+        }
+    },
+    async setNajava(context) {
+        const response = await axios.get(`https://www.subotica.info/restful-najava`);
+        let results = [];
+        for (const data of response.data.nodes) {
+            results.push(data.node);
+        }
+        context.commit('addNajava', results);
+    },
+    async setPanoramica(context) {
+        const random = await Math.floor(Math.random() * 31)
+        const response = await axios.get(`https://www.subotica.info/restful-panoramica?page=${random}`);
+        const r = Math.floor(Math.random() * response.data.nodes.length);
+        context.commit('addPanoramica', response.data.nodes[r].node);
+    },
+
+    async loadSportItems(context, payload) {
+        try {
+            const response = await axios.get(`https://www.subotica.info/restful-sport?page=${payload}`);
+            for (let i = 0; i < response.data.nodes.length; i++)
+                context.commit('addSport', response.data.nodes[i].node);
+        } catch (error) {
+            console.error(error);
+        }
+    },
+    async loadCultureItems(context, payload) {
+        try {
+            const response = await axios.get(`https://www.subotica.info/restful-kultura?page=${payload}`);
+            for (let i = 0; i < response.data.nodes.length; i++)
+                context.commit('addCulture', response.data.nodes[i].node);
+        } catch (error) {
+            console.error(error);
         }
     },
     Reset(context) {

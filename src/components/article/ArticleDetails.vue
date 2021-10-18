@@ -26,6 +26,7 @@
       Fotograf: <span class="fw-light">{{ fotograf }}</span>
     </p>
   </div>
+  <TheFooter/>
 </template>
 
 <script>
@@ -33,10 +34,12 @@ import { useStore } from "vuex";
 import { useRoute } from "vue-router";
 import { onMounted, computed } from "vue";
 import TheHeader from "../UI/TheHeader.vue";
+import TheFooter from "../UI/TheFooter.vue";
 
 export default {
   components: {
     TheHeader,
+    TheFooter
   },
   setup() {
     const store = useStore();
