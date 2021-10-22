@@ -158,7 +158,8 @@ export default {
                     comment: payload.comment,
                     articleNid: payload.articleNid,
                     id: context.state.userId + postTime,
-                    likeCount: 0
+                    likedBy: [""],
+                    dislikedBy: [""]
                 })
             });
 
@@ -178,6 +179,7 @@ export default {
         const resp = await fetch('https://subotica-info-5ee5a-default-rtdb.europe-west1.firebasedatabase.app/comments.json');
 
         const data = await resp.json();
+        const user = localStorage.getItem('userId');
 
         let likedKey;
 
@@ -185,9 +187,44 @@ export default {
             if (data[key].id == payload)
                 likedKey = key;
         }
-        
-        data[likedKey].likeCount += 1;
-        
+
+        if (data[likedKey].likedBy.find(lB => lB == user))
+            data[likedKey].likedBy.pop(user);
+        else if (data[likedKey].dislikedBy.find(lB => lB == user)) {
+            data[likedKey].likedBy.push(user);
+            data[likedKey].dislikedBy.pop(user);
+        }
+        else
+            data[likedKey].likedBy.push(user);
+
+        await fetch('https://subotica-info-5ee5a-default-rtdb.europe-west1.firebasedatabase.app/comments.json', {
+            method: 'PUT',
+            body: JSON.stringify(data)
+        });
+    },
+
+    async dislikeComment(_, payload) {
+        const resp = await fetch('https://subotica-info-5ee5a-default-rtdb.europe-west1.firebasedatabase.app/comments.json');
+
+        const data = await resp.json();
+        const user = localStorage.getItem('userId');
+
+        let dislikedKey;
+
+        for (const key of Object.keys(data)) {
+            if (data[key].id == payload)
+                dislikedKey = key;
+        }
+
+        if (data[dislikedKey].dislikedBy.find(lB => lB == user))
+            data[dislikedKey].dislikedBy.pop(user);
+        else if (data[dislikedKey].likedBy.find(lB => lB == user)) {
+            data[dislikedKey].likedBy.pop(user);
+            data[dislikedKey].dislikedBy.push(user);
+        }
+        else
+            data[dislikedKey].dislikedBy.push(user);
+
         await fetch('https://subotica-info-5ee5a-default-rtdb.europe-west1.firebasedatabase.app/comments.json', {
             method: 'PUT',
             body: JSON.stringify(data)

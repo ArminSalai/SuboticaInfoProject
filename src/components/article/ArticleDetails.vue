@@ -53,7 +53,8 @@
         :key="comm.id"
         :username="comm.user"
         :comment="comm.comment"
-        :likeCount="comm.likeCount"
+        :likedBy="comm.likedBy"
+        :dislikedBy="comm.dislikedBy"
         :id="comm.id"
       />
     </ul>
