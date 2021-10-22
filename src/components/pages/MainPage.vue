@@ -9,36 +9,87 @@
         <p class="display-2 m-0 pt-5">Zajednica</p>
         <div class="row justify-content-center">
           <div class="col-7 mt-5 position-relative">
-            <img
-              class="w-100"
-              :src="zajednica['Vodeca slika']"
-              alt="Image Not Available"
-            />
-						<h3><router-link :to="'/details/' + zajednica.Nid" class="position-absolute text-light bottom-0 bg-news-title center-title px-3 py-2 mb-3">{{ zajednica.Naslov }}</router-link></h3>
+            <router-link :to="'/details/' + zajednica.Nid"
+              ><img
+                class="w-100"
+                :src="zajednica['Vodeca slika']"
+                alt="Image Not Available"
+              />
+            </router-link>
+            <h3>
+              <router-link
+                :to="'/details/' + zajednica.Nid"
+                class="
+                  position-absolute
+                  text-light
+                  bottom-0
+                  bg-news-title
+                  center-title
+                  px-3
+                  py-2
+                  mb-3
+                "
+                >{{ zajednica.Naslov }}</router-link
+              >
+            </h3>
           </div>
         </div>
-        <hr class="mt-5 mx-3">
+        <hr class="mt-5 mx-3" />
         <p class="display-2 m-0 pt-5">Sport</p>
         <div class="row justify-content-center">
           <div class="col-7 mt-5 position-relative">
-            <img
-              class="w-100"
-              :src="sport['Vodeca slika']"
-              alt="Image Not Available"
-            />
-						<h3><router-link :to="'/details/' + sport.Nid" class="position-absolute text-light bottom-0 bg-news-title center-title px-3 py-2 mb-3">{{ sport.Naslov }}</router-link></h3>
+            <router-link :to="'/details/' + sport.Nid">
+              <img
+                class="w-100"
+                :src="sport['Vodeca slika']"
+                alt="Image Not Available"
+              />
+            </router-link>
+            <h3>
+              <router-link
+                :to="'/details/' + sport.Nid"
+                class="
+                  position-absolute
+                  text-light
+                  bottom-0
+                  bg-news-title
+                  center-title
+                  px-3
+                  py-2
+                  mb-3
+                "
+                >{{ sport.Naslov }}</router-link
+              >
+            </h3>
           </div>
         </div>
-        <hr class="mt-5 mx-3">
-				<p class="display-2 m-0 pt-5">Kultura</p>
+        <hr class="mt-5 mx-3" />
+        <p class="display-2 m-0 pt-5">Kultura</p>
         <div class="row justify-content-center pb-5">
           <div class="col-7 mt-5 position-relative">
+            <router-link :to="'/details/' + kultura.Nid">
             <img
               class="w-100"
               :src="kultura['Vodeca slika']"
               alt="Image Not Available"
             />
-						<h3><router-link :to="'/details/' + kultura.Nid" class="position-absolute text-light bottom-0 bg-news-title center-title px-3 py-2 mb-3">{{ kultura.Naslov }}</router-link></h3>
+            </router-link>
+            <h3>
+              <router-link
+                :to="'/details/' + kultura.Nid"
+                class="
+                  position-absolute
+                  text-light
+                  bottom-0
+                  bg-news-title
+                  center-title
+                  px-3
+                  py-2
+                  mb-3
+                "
+                >{{ kultura.Naslov }}</router-link
+              >
+            </h3>
           </div>
         </div>
       </div>
@@ -58,7 +109,7 @@ export default {
   components: {
     TheHeader,
     CarouselMain,
-    TheFooter
+    TheFooter,
   },
   setup() {
     const store = useStore();
@@ -91,7 +142,7 @@ export default {
       } else return "null";
     });
 
-		async function getKultura() {
+    async function getKultura() {
       await store.dispatch("setCultures", "latest");
     }
 
@@ -107,17 +158,17 @@ export default {
       current.value = latestArticles.value.find(
         (node) => node.Nid == Math.max(node.Nid)
       ).Nid;
-			await getZajednica();
+      await getZajednica();
       await getSport();
-			await getKultura();
+      await getKultura();
     });
 
     return {
       current,
       latestArticles,
       sport,
-			zajednica,
-			kultura
+      zajednica,
+      kultura,
     };
   },
 };

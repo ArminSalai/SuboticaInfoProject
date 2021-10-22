@@ -11,6 +11,10 @@ import EventAnns from '../src/components/pages/EventAnns.vue';
 import RegisterPage from '../src/components/user-specific/RegisterPage.vue';
 import LoginPage from '../src/components/user-specific/LoginPage.vue';
 import MovieDetails from '../src/components/najava/MovieDetails.vue';
+import ZajednicaList from '../src/components/secondaryPages/ZajednicaList.vue';
+import PrivredaList from '../src/components/secondaryPages/PrivredaList.vue';
+import IntervjuList from '../src/components/secondaryPages/IntervjuList.vue';
+import PressList from '../src/components/secondaryPages/PressList.vue';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -40,12 +44,28 @@ const router = createRouter({
       component: KulturaLatest
     },
     {
+      path: '/kategorija/zajednica/sve',
+      component: ZajednicaList
+    },
+    {
+      path: '/kategorija/privreda/sve',
+      component: PrivredaList
+    },
+    {
+      path: '/kategorija/intervju/sve',
+      component: IntervjuList
+    },
+    {
       path: '/kategorija/sport/sve',
       component: SportList
     },
     {
       path: '/kategorija/kultura/sve',
       component: CultureList
+    },
+    {
+      path: '/kategorija/press/sve',
+      component: PressList
     },
     {
       path: '/najava',

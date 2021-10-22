@@ -1,5 +1,5 @@
 <template>
-  <TheHeader />
+  <SecondaryHeader />
   <div class="container">
     <h1 class="mt-5 mb-3">Search Results:</h1>
     <div class="row d-flex flex-row">
@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import TheHeader from "../UI/TheHeader.vue";
+import SecondaryHeader from "../UI/SecondaryHeader.vue";
 import TheFooter from "../UI/TheFooter.vue";
 import ResultItem from "../results/ResultItem.vue";
 import { useStore } from "vuex";
@@ -44,7 +44,7 @@ import { ref, onMounted, computed } from "vue";
 
 export default {
   components: {
-    TheHeader,
+    SecondaryHeader,
     ResultItem,
     TheFooter
   },

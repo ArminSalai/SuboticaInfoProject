@@ -17,6 +17,15 @@ export default {
     addZajednica(state, payload) {
         state.zajednica.push(payload);
     },
+    addPrivreda(state, payload) {
+        state.privreda.push(payload);
+    },
+    addIntervju(state, payload) {
+        state.intervju.push(payload);
+    },
+    addPress(state, payload) {
+        state.press.push(payload);
+    },
     addNajava(state, payload) {
         state.najava.push(payload);
     },

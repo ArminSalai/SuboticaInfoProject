@@ -1,5 +1,5 @@
 <template>
-  <TheHeader />
+  <SecondaryHeader />
   <div class="container">
     <h1 class="mt-5 mb-3">Sport</h1>
     <div class="row d-flex flex-row">
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import TheHeader from "../UI/TheHeader.vue";
+import SecondaryHeader from "../UI/SecondaryHeader.vue";
 import ResultItem from "../results/ResultItem.vue";
 import { useStore } from "vuex";
 import { ref, computed, onMounted, onBeforeUnmount } from "vue";
@@ -28,7 +28,7 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
 export default {
   components: {
-    TheHeader,
+    SecondaryHeader,
     ResultItem,
   },
   setup() {

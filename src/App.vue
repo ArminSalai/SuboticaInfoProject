@@ -80,9 +80,29 @@ router-view {
 }
 
 .profilePic {
-  display: block;
-  width: 5vw !important;
-  height: 5vw !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5vw;
+  height: 5vw;
+  margin-right: 1rem;
+  font-size: 3.5rem;
+  overflow: hidden;
+  border-radius: 50%;
+  color: white;
+}
+
+.profilePicHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3vw;
+  height: 3vw;
+  margin-right: 1rem;
+  font-size: 2.5rem;
+  overflow: hidden;
+  border-radius: 50%;
+  color: white;
 }
 
 .likeButton {
@@ -121,9 +141,25 @@ router-view {
   background-color: white;
 }
 
+.secondaryHeaderBg {
+  background-color: #d00b0b;
+}
+
+.sHBg {
+  background-color: #d00b0b;
+}
+
+.secondaryHeaderBg:hover {
+  background-color: #a00808;
+}
+
 @media (max-width: 1199.98px) {
   .w-caru {
     width: 100%;
+  }
+  .profilePicHeader {
+    width: 7vw;
+    height: 7vw;
   }
 }
 

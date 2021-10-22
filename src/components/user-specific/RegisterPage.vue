@@ -1,5 +1,5 @@
 <template>
-  <TheHeader />
+  <SecondaryHeader />
   <div class="container bg-dark text-light mt-5 w-50 rounded-3">
     <h2 class="ps-4 pt-4">Registruj se:</h2>
     <form
@@ -55,14 +55,14 @@
 </template>
 
 <script>
-import TheHeader from "../UI/TheHeader.vue";
+import SecondaryHeader from "../UI/SecondaryHeader.vue";
 import { useStore } from 'vuex';
 import { useRouter } from 'vue-router';
 import { ref } from "vue";
 
 export default {
   components: {
-    TheHeader,
+    SecondaryHeader,
   },
   setup() {
     const router = useRouter();

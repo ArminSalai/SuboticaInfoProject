@@ -40,7 +40,8 @@ export default {
         const UserName = additionalData[userKey].username;
 
         if (!response.ok) {
-            console.log(data)
+            console.log(data);
+            alert("Probajte ponovo sa valid imejl adresa i lozinka!");
             const error = new Error(data.message || 'Failed to load');
             throw error;
         }
@@ -89,7 +90,7 @@ export default {
         const UserName = additionalData[userKey].username;
 
         if (!response.ok) {
-            console.log(data)
+            console.log(data);
             const error = new Error(data.message || 'Failed to load');
             throw error;
         }

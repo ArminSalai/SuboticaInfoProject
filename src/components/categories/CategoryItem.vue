@@ -2,7 +2,7 @@
   <li class="p-1 my-5">
     <div class="row">
       <div class="col-4">
-        <img :src="image" class="w-100 rounded-2" alt="No Image Provided" />
+        <router-link :to="'/details/' + index"><img :src="image" class="w-100 rounded-2" alt="No Image Provided" /></router-link>
       </div>
       <div class="col-6 d-flex flex-column">
         <h3><router-link :to="'/details/' + index" class="text-decoration-none text-dark">{{ title }}</router-link></h3>

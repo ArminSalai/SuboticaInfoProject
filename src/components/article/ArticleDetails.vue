@@ -1,5 +1,5 @@
 <template>
-  <TheHeader class="mb-5" />
+  <SecondaryHeader class="mb-5" />
   <div class="container-fluid w-75">
     <img :src="image" class="img-fluid w-100" alt="No Image Provided" />
     <br />
@@ -66,13 +66,13 @@
 import { useStore } from "vuex";
 import { useRoute } from "vue-router";
 import { ref, onMounted, computed } from "vue";
-import TheHeader from "../UI/TheHeader.vue";
+import SecondaryHeader from "../UI/SecondaryHeader.vue";
 import CommentItem from "../article/CommentItem.vue";
 import TheFooter from "../UI/TheFooter.vue";
 
 export default {
   components: {
-    TheHeader,
+    SecondaryHeader,
     TheFooter,
     CommentItem,
   },
@@ -121,6 +121,10 @@ export default {
     });
 
     async function postComment() {
+      if(store.getters.getUserName == "") {
+        alert("Please try logging in first");
+        return;
+      }
       await store.dispatch("comment", {
         comment: comment.value,
         articleNid: article.value.Nid,

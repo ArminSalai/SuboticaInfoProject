@@ -1,5 +1,5 @@
 <template>
-  <TheHeader class="mb-5" />
+  <SecondaryHeader class="mb-5" />
   <div class="container-fluid w-75">
     <img :src="image" class="img-fluid w-25 m-auto" alt="No Image Provided" />
     <br />
@@ -23,12 +23,12 @@
 import { useStore } from "vuex";
 import { useRoute } from "vue-router";
 import { onMounted, computed } from "vue";
-import TheHeader from "../UI/TheHeader.vue";
+import SecondaryHeader from "../UI/SecondaryHeader.vue";
 import TheFooter from "../UI/TheFooter.vue";
 
 export default {
   components: {
-    TheHeader,
+    SecondaryHeader,
     TheFooter
   },
   setup() {

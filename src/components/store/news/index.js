@@ -10,6 +10,9 @@ export default {
             cultures: [],
             zajednica: [],
             najava: [],
+            privreda: [],
+            intervju: [],
+            press: [],
             panoramica: {},
             searchTerm: ''
         }

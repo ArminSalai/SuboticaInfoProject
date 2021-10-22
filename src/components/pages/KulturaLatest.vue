@@ -1,5 +1,5 @@
 <template>
-  <TheHeader />
+  <SecondaryHeader />
   <div class="container mb-5">
     <div v-if="infos && infos[0]" class="mt-5">
       <router-link
@@ -8,11 +8,13 @@
         >{{ infos[0].Naslov }}</router-link
       >
       <div class="row">
+        <router-link :to="'/details/' + infos[0].Nid">
         <img
           :src="infos[0]['Vodeca slika']"
           class="w-100 img-fluid"
           alt="No Image Avaliable"
         />
+        </router-link>
         <div class="row">
           <p class="lead indented">{{ desc }}</p>
         </div>
@@ -39,7 +41,7 @@
 </template>
 
 <script>
-import TheHeader from "../UI/TheHeader.vue";
+import SecondaryHeader from "../UI/SecondaryHeader.vue";
 import TheFooter from "../UI/TheFooter.vue";
 import shortenDesc from "../hooks/shortenDesc.js";
 import CategoryItem from "../categories/CategoryItem.vue";
@@ -48,9 +50,9 @@ import { useStore } from "vuex";
 
 export default {
   components: {
-    TheHeader,
+    SecondaryHeader,
     CategoryItem,
-    TheFooter
+    TheFooter,
   },
   setup() {
     const store = useStore();

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TheHeader />
+    <SecondaryHeader />
     <section>
       <div class="container">
         <ul class="list-unstyled mt-5">
@@ -55,7 +55,7 @@
 </template>
 
 <script>
-import TheHeader from "../UI/TheHeader.vue";
+import SecondaryHeader from "../UI/SecondaryHeader.vue";
 import TheFooter from "../UI/TheFooter.vue";
 import ResultItem from "../results/ResultItem.vue";
 import { useStore } from "vuex";
@@ -65,7 +65,7 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
 export default {
   components: {
-    TheHeader,
+    SecondaryHeader,
     ResultItem,
     TheFooter
   },

@@ -141,6 +141,42 @@ export default {
             console.error(error);
         }
     },
+    async loadZajednicaItems(context, payload) {
+        try {
+            const response = await axios.get(`https://www.subotica.info/restful-zajednica?page=${payload}`);
+            for (let i = 0; i < response.data.nodes.length; i++)
+                context.commit('addZajednica', response.data.nodes[i].node);
+        } catch (error) {
+            console.error(error);
+        }
+    },
+    async loadPrivredaItems(context, payload) {
+        try {
+            const response = await axios.get(`https://www.subotica.info/restful-privreda?page=${payload}`);
+            for (let i = 0; i < response.data.nodes.length; i++)
+                context.commit('addPrivreda', response.data.nodes[i].node);
+        } catch (error) {
+            console.error(error);
+        }
+    },
+    async loadIntervjuItems(context, payload) {
+        try {
+            const response = await axios.get(`https://www.subotica.info/restful-intervju?page=${payload}`);
+            for (let i = 0; i < response.data.nodes.length; i++)
+                context.commit('addIntervju', response.data.nodes[i].node);
+        } catch (error) {
+            console.error(error);
+        }
+    },
+    async loadPressItems(context, payload) {
+        try {
+            const response = await axios.get(`https://www.subotica.info/restful-press?page=${payload}`);
+            for (let i = 0; i < response.data.nodes.length; i++)
+                context.commit('addPress', response.data.nodes[i].node);
+        } catch (error) {
+            console.error(error);
+        }
+    },
     Reset(context) {
         context.commit('reset');
     },

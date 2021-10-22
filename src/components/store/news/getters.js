@@ -19,5 +19,14 @@ export default {
     },
     getPanoramica(state) {
         return state.panoramica;
+    },
+    getPrivreda(state) {
+        return state.privreda;
+    },
+    getIntervju(state) {
+        return state.intervju;
+    },
+    getPress(state) {
+        return state.press;
     }
 }

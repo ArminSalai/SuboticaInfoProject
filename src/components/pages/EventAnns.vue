@@ -1,5 +1,5 @@
 <template>
-  <TheHeader />
+  <SecondaryHeader />
   <div class="container mt-5">
     <h1>Najava Događaja</h1>
     <u class="list-unstyled text-decoration-none">
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import TheHeader from "../UI/TheHeader.vue";
+import SecondaryHeader from "../UI/SecondaryHeader.vue";
 import TheFooter from "../UI/TheFooter.vue";
 import DayItem from "../najava/DayItem.vue";
 import { useStore } from "vuex";
@@ -27,7 +27,7 @@ import { onMounted, computed } from "vue";
 
 export default {
   components: {
-    TheHeader,
+    SecondaryHeader,
     DayItem,
     TheFooter
   },

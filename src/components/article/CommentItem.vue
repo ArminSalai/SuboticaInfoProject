@@ -5,15 +5,8 @@
         <span
           class="
             bg-danger
-            rounded-circle
             profilePic
-            text-light
-            display-3
-            pt-3
-            d-flex
-            align-items-center
-            justify-content-center
-            overflow-hidden
+            pt-2
           "
           >{{ ProfileLetter }}</span
         >
@@ -58,6 +51,10 @@ export default {
     const liked = ref(false);
     
     async function likeComment() {
+      if(store.getters.getUserName == "") {
+        alert("Please try logging in first");
+        return;
+      }
       await store.dispatch("likeComment", props.id);
       await store.dispatch("loadComments", route.params.Nid);
     }
@@ -65,6 +62,10 @@ export default {
     const disliked = ref(false);
 
     async function dislikeComment() {
+      if(store.getters.getUserName == "") {
+        alert("Please try logging in first");
+        return;
+      }
       await store.dispatch("dislikeComment", props.id);
       store.dispatch("loadComments", route.params.Nid);
     }

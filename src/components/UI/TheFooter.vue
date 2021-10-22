@@ -13,7 +13,7 @@
       >.
     </p>
     <p class="lead text-center text-dark">
-      This site is created by Armin Salai
+      This site was created by Armin Salai
     </p>
   </div>
 </template>
