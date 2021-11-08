@@ -11,19 +11,8 @@
           id="dropdownMenuButton1"
           data-bs-toggle="dropdown"
           aria-expanded="false"
-          v-if="selectedCategory"
         >
-          {{ selectedCategory }}
-        </button>
-        <button
-          class="btn btn-light border-secondary dropdown-toggle"
-          type="button"
-          id="dropdownMenuButton1"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-          v-else
-        >
-          -- Sve --
+          {{ category }}
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
           <li>
@@ -55,7 +44,7 @@
               class="dropdown-item"
               @click="setCategory"
               :to="'/kategorija/press/gradonacelnik'"
-              >Gradonacelnik-</router-link
+              >Gradonacelnik</router-link
             >
           </li>
           <li>
@@ -136,12 +125,23 @@ export default {
       return route.params.category;
     });
 
+    const category = computed(() => {
+      if (selectedCategory.value == undefined)
+        return "-- Sve --"
+      else
+        return String(selectedCategory.value).substring(0, 1).toUpperCase() + String(selectedCategory.value).substring(1);
+    });
+
     async function setCategory() {
       store.dispatch("Reset");
-      await store.dispatch("loadPressItems", {
-        page: page.value,
-        category: selectedCategory,
-      });
+      page.value = 0;
+      while (articles.value.length < 10) {
+        page.value++;
+        await store.dispatch("loadPressItems", {
+          page: page.value,
+          category: selectedCategory,
+        });
+      }
     }
 
     async function load() {
@@ -182,7 +182,7 @@ export default {
       articles,
       load,
       ChangeFilter,
-      selectedCategory,
+      category,
       setCategory,
     };
   },

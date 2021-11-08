@@ -2,17 +2,19 @@
   <SecondaryHeader />
   <div class="container">
     <h1 class="mt-5 mb-3">Daily Photo</h1>
-    <div class="row d-flex flex-row">
+    <div class="row d-flex">
       <ul class="p-0 mt-5 list-unstyled">
-        <PhotoItem
-          v-for="article in articles"
-          :key="article.Nid"
-          :index="article.Nid"
-          :title="article.Naslov"
-          :fullDesc="article['Sadrzaj clanka']"
-          :image="article['Vodeca slika']"
-          :date="article['Post date']"
-        />
+        <div class="d-flex flex-wrap">
+          <PhotoItem
+            v-for="article in articles"
+            :key="article.Nid"
+            :index="article.Nid"
+            :title="article.Naslov"
+            :fullDesc="article['Sadrzaj clanka']"
+            :image="article['Vodeca slika']"
+            :date="article['Post date']"
+          />
+        </div>
       </ul>
     </div>
   </div>

@@ -1,15 +1,12 @@
 <template>
   <li class="p-3 my-3 w-25">
-    <div class="d-flex fst-italic">
-      <h6>
+      <h6 class="fst-italic">
         <router-link
           :to="'/details/' + index"
           class="text-decoration-none text-secondary"
           >{{ title }}</router-link
-        >
+        > - {{ date }}
       </h6>
-      <p class="mb-0 ms-2">- {{ date }}</p>
-    </div>
     <router-link :to="'/details/' + index"
       ><img
         :src="image"

@@ -1,5 +1,5 @@
 <template>
-  <li class="p-3 my-3">
+  <li class="p-3 my-3 border-bottom border-secondary">
     <div class="row">
       <h3>
         <router-link

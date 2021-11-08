@@ -42,5 +42,18 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "description": "## Project setup ``` npm install ```",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArminSalai/SuboticaInfoProject.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArminSalai/SuboticaInfoProject/issues"
+  },
+  "homepage": "https://github.com/ArminSalai/SuboticaInfoProject#readme"
 }
