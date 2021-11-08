@@ -13,10 +13,11 @@ import LoginPage from '../src/components/user-specific/LoginPage.vue';
 import MovieDetails from '../src/components/najava/MovieDetails.vue';
 import ZajednicaList from '../src/components/secondaryPages/ZajednicaList.vue';
 import PrivredaList from '../src/components/secondaryPages/PrivredaList.vue';
-import IntervjuList from '../src/components/secondaryPages/IntervjuList.vue';
+import IntervjuList from '../src/components/intervju/IntervjuList.vue';
 import PressList from '../src/components/secondaryPages/PressList.vue';
 import DailyPhoto from '../src/components/daily/DailyPhoto.vue';
 import DailyDetails from '../src/components/daily/DailyDetails.vue';
+import IntervjuDetails from '../src/components/intervju/IntervjuDetails.vue';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -88,6 +89,10 @@ const router = createRouter({
     {
       path: '/daily/details/:Nid',
       component: DailyDetails
+    },
+    {
+      path: '/intervju/details/:Nid',
+      component: IntervjuDetails
     },
     {
       path: '/register',

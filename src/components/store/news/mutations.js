@@ -33,6 +33,10 @@ export default {
         state.daily = [];
         state.daily.push(payload);
     },
+    setIntervju(state, payload) {
+        state.intervju = [];
+        state.intervju.push(payload);
+    },
     addNajava(state, payload) {
         state.najava.push(payload);
     },

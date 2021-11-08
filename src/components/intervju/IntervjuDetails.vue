@@ -1,0 +1,82 @@
+<template>
+  <div>
+    <SecondaryHeader class="mb-5" />
+    <div class="container-fluid w-50">
+      <h1>{{ title }}</h1>
+      <p class="text-secondary">{{ date }}</p>
+      <img :src="image" class="img-fluid w-50 m-auto" alt="No Image Provided" />
+      <br />
+      <p class="lead indented mt-5">
+        {{ desc }}
+      </p>
+      <p class="mt-3"><b>Tagovi: </b> {{ tagovi }}</p>
+      <p><b>Ličnosti: </b> {{ licnosti }}</p>
+    </div>
+    <TheFooter />
+  </div>
+</template>
+
+<script>
+import { useStore } from "vuex";
+import { useRoute } from "vue-router";
+import { onBeforeMount, computed } from "vue";
+import SecondaryHeader from "../UI/SecondaryHeader.vue";
+import TheFooter from "../UI/TheFooter.vue";
+
+export default {
+  components: {
+    SecondaryHeader,
+    TheFooter,
+  },
+  setup() {
+    const store = useStore();
+    const route = useRoute();
+
+    async function getArticle() {
+      await store.dispatch("setIntervjuDetails", route.params.Nid);
+    }
+
+    const article = computed(() => {
+      return store.getters.getIntervju[0];
+    });
+
+    const title = computed(() => {
+      if (article.value == undefined) return null;
+      else return article.value.Naslov;
+    });
+    const date = computed(() => {
+      if (article.value == undefined) return null;
+      else return article.value['Post date'];
+    });
+    const desc = computed(() => {
+      if (article.value == undefined) return null;
+      else return article.value["Sadrzaj clanka"];
+    });
+    const image = computed(() => {
+      if (article.value == undefined) return null;
+      else return article.value["Vodeca slika"];
+    });
+    const tagovi = computed(() => {
+      if (article.value == undefined) return null;
+      else return article.value.Tagovi;
+    });
+    const licnosti = computed(() => {
+      if (article.value == undefined) return null;
+      else return article.value.Licnosti;
+    });
+
+    onBeforeMount(async function () {
+      await getArticle();
+    });
+
+    return {
+      title,
+      date,
+      desc,
+      image,
+      tagovi,
+      licnosti
+    };
+  },
+};
+</script>

@@ -5,7 +5,7 @@
       <h1 class="mt-5 mb-3">Intervju</h1>
       <div class="row d-flex flex-row">
         <ul class="p-0 mt-5 list-unstyled">
-          <ResultItem
+          <IntervjuItem
             v-for="article in articles"
             :key="article.Nid"
             :index="article.Nid"
@@ -22,7 +22,7 @@
 
 <script>
 import SecondaryHeader from "../UI/SecondaryHeader.vue";
-import ResultItem from "../results/ResultItem.vue";
+import IntervjuItem from "./IntervjuItem.vue";
 import { useStore } from "vuex";
 import { ref, computed, onMounted, onBeforeUnmount } from "vue";
 import { gsap } from "gsap";
@@ -31,7 +31,7 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 export default {
   components: {
     SecondaryHeader,
-    ResultItem,
+    IntervjuItem,
   },
   setup() {
     gsap.registerPlugin(ScrollToPlugin);

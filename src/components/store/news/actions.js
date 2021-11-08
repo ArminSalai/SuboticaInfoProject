@@ -198,6 +198,12 @@ export default {
             if (data.node.Nid == payload) context.commit('setDaily', data.node);
         }
     },
+    async setIntervjuDetails(context, payload) {
+        const response = await axios.get(`https://www.subotica.info/restful-intervju`);
+        for (const data of response.data.nodes) {
+            if (data.node.Nid == payload) context.commit('setIntervju', data.node);
+        }
+    },
     Reset(context) {
         context.commit('reset');
     },

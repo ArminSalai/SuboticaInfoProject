@@ -84,11 +84,11 @@ export default {
     async function scrolled() {
       await store.dispatch("setLatest", page.value);
       await getLatest(page.value);
-      if(page.value > 3 && page.value < 4462) {
+      if(page.value > 3 && page.value < 97) {
         nums.value = [...Array(7).keys()].map(i => i + page.value - 3);
       }
-      else if(page.value > 4463) {
-        nums.value = [...Array(7).keys()].map(i => i + 4459);
+      else if(page.value > 100) {
+        nums.value = [...Array(7).keys()].map(i => i + 100);
       }
       else if(page.value < 3) {
         nums.value = [1, 2, 3, 4, 5, 6, 7];
@@ -119,7 +119,7 @@ export default {
     }
 
     async function last() {
-      page.value = 4465;
+      page.value = 100;
       scrolled();
     }
 

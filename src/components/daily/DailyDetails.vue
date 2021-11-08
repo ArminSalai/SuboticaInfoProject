@@ -17,7 +17,7 @@
 <script>
 import { useStore } from "vuex";
 import { useRoute } from "vue-router";
-import { onMounted, computed } from "vue";
+import { onBeforeMount, computed } from "vue";
 import SecondaryHeader from "../UI/SecondaryHeader.vue";
 import TheFooter from "../UI/TheFooter.vue";
 
@@ -38,12 +38,12 @@ export default {
       return store.getters.getDaily[0];
     });
 
-    const title = computed(() => article.value.Naslov);
-    const desc = computed(() => article.value["Sadrzaj clanka"]);
-    const image = computed(() => article.value["Vodeca slika"]);
-    const tagovi = computed(() => article.value.Tagovi);
+    const title = computed(() => { if(article.value == undefined) return null; else return article.value.Naslov ;});
+    const desc = computed(() => { if(article.value == undefined) return null; else return article.value["Sadrzaj clanka"];});
+    const image = computed(() => { if(article.value == undefined) return null; else return article.value["Vodeca slika"];});
+    const tagovi = computed(() => { if(article.value == undefined) return null; else return article.value.Tagovi;});
 
-    onMounted(async function () {
+    onBeforeMount(async function () {
       await getArticle();
     });
 
