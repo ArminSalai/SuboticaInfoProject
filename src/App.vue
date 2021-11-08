@@ -1,17 +1,18 @@
 <template>
-  <router-view></router-view>
+  <router-view v-slot="{ Component }">
+    <transition name="fade">
+      <component :is="Component" />
+    </transition>
+  </router-view>
 </template>
 
 <script>
-
 export default {
-  name: 'App',
+  name: "App",
   created() {
-    this.$store.dispatch('autoLogin');
-  }
-}
-
-
+    this.$store.dispatch("autoLogin");
+  },
+};
 </script>
 
 <style>
@@ -20,6 +21,17 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.25s ease;
+}
+
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 
 .bg-news-title {
@@ -54,10 +66,10 @@ router-view {
 }
 
 .center-title {
-  position: absolute; 
-  left: 0; 
-  right: 0; 
-  margin-left: auto; 
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
   margin-right: auto;
   width: max-content;
   max-width: 90%;
@@ -103,12 +115,13 @@ router-view {
   overflow: hidden;
   border-radius: 50%;
   color: white;
+  float: left;
 }
 
 .likeButton {
   width: 2vw;
   height: 2vw;
-  mask: url('assets/thumb_up_black_24dp.svg');
+  mask: url("assets/thumb_up_black_24dp.svg");
   mask-repeat: no-repeat;
   mask-size: 90%;
   mask-position: center;
@@ -123,7 +136,7 @@ router-view {
 .dislikeButton {
   width: 2vw;
   height: 2vw;
-  mask: url('assets/thumb_down_black_24dp.svg');
+  mask: url("assets/thumb_down_black_24dp.svg");
   mask-repeat: no-repeat;
   mask-position: center;
   mask-size: 90%;
@@ -164,13 +177,13 @@ router-view {
 }
 
 .footer-title {
-  position: absolute; 
-  left: 0; 
+  position: absolute;
+  left: 0;
   right: 0;
   bottom: 1rem;
   background: #ccccccc0;
-  margin-left: auto; 
-  margin-right: auto; 
+  margin-left: auto;
+  margin-right: auto;
   width: max-content;
 }
 </style>

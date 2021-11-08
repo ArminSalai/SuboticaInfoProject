@@ -7,7 +7,7 @@
     <section class="bg-dark text-light mt-5">
       <div class="container">
         <p class="display-2 m-0 pt-5">Zajednica</p>
-        <div class="row justify-content-center">
+        <div v-if="loadedZajednica" class="row justify-content-center">
           <div class="col-7 mt-5 position-relative">
             <router-link :to="'/details/' + zajednica.Nid"
               ><img
@@ -16,7 +16,7 @@
                 alt="Image Not Available"
               />
             </router-link>
-            <h3>
+            <h3 class="d-md-block d-none">
               <router-link
                 :to="'/details/' + zajednica.Nid"
                 class="
@@ -34,9 +34,12 @@
             </h3>
           </div>
         </div>
+        <div v-else class="spinner-border text-danger d-flex mx-auto align-slef-center" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
         <hr class="mt-5 mx-3" />
         <p class="display-2 m-0 pt-5">Sport</p>
-        <div class="row justify-content-center">
+        <div v-if="loadedSport" class="row justify-content-center">
           <div class="col-7 mt-5 position-relative">
             <router-link :to="'/details/' + sport.Nid">
               <img
@@ -45,7 +48,7 @@
                 alt="Image Not Available"
               />
             </router-link>
-            <h3>
+            <h3 class="d-md-block d-none">
               <router-link
                 :to="'/details/' + sport.Nid"
                 class="
@@ -63,18 +66,21 @@
             </h3>
           </div>
         </div>
+        <div v-else class="spinner-border text-danger d-flex mx-auto align-slef-center" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
         <hr class="mt-5 mx-3" />
         <p class="display-2 m-0 pt-5">Kultura</p>
-        <div class="row justify-content-center pb-5">
+        <div v-if="loadedKultura" class="row justify-content-center pb-5">
           <div class="col-7 mt-5 position-relative">
             <router-link :to="'/details/' + kultura.Nid">
-            <img
-              class="w-100"
-              :src="kultura['Vodeca slika']"
-              alt="Image Not Available"
-            />
+              <img
+                class="w-100"
+                :src="kultura['Vodeca slika']"
+                alt="Image Not Available"
+              />
             </router-link>
-            <h3>
+            <h3 class="d-md-block d-none">
               <router-link
                 :to="'/details/' + kultura.Nid"
                 class="
@@ -91,6 +97,9 @@
               >
             </h3>
           </div>
+        </div>
+        <div v-else class="spinner-border text-danger d-flex mx-auto align-slef-center" role="status">
+          <span class="visually-hidden">Loading...</span>
         </div>
       </div>
     </section>
@@ -152,6 +161,10 @@ export default {
       } else return "null";
     });
 
+    const loadedZajednica = ref(false);
+    const loadedSport = ref(false);
+    const loadedKultura = ref(false);
+
     onMounted(async function () {
       store.dispatch("Reset");
       await getLatestArticles();
@@ -159,8 +172,11 @@ export default {
         (node) => node.Nid == Math.max(node.Nid)
       ).Nid;
       await getZajednica();
+      loadedZajednica.value = true;
       await getSport();
+      loadedSport.value = true;
       await getKultura();
+      loadedKultura.value = true;
     });
 
     return {
@@ -169,6 +185,9 @@ export default {
       sport,
       zajednica,
       kultura,
+      loadedZajednica,
+      loadedSport,
+      loadedKultura
     };
   },
 };

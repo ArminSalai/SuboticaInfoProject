@@ -2,7 +2,7 @@
   <div v-if="panoramica" class="container-flex">
     <div class="position-relative">
       <img :src="pic" class="w-100" alt="No Image Available" />
-      <p class="h4 footer-title pt-3 pb-2 px-5 text-dark">{{ title }}</p>
+      <p class="h4 footer-title pt-3 pb-2 px-5 text-dark d-md-block d-none">{{ title }}</p>
     </div>
     <p class="lead text-center text-dark mb-1 mt-3">
       This page is a replicated version of

@@ -1,38 +1,40 @@
 <template>
-  <SecondaryHeader />
-  <div class="container">
-    <h1 class="mt-5 mb-3">Search Results:</h1>
-    <div class="row d-flex flex-row">
-      <label for="search">Search terms: </label>
-      <div class="col-5">
-        <form @submit.prevent="search" class="d-flex">
-          <input
-            class="form-control me-2 pb-1"
-            type="search"
-            v-model="searchTerm"
-            aria-label="Search"
-            id="search"
+  <div>
+    <SecondaryHeader />
+    <div class="container">
+      <h1 class="mt-5 mb-3">Search Results:</h1>
+      <div class="row d-flex flex-row">
+        <label for="search">Search terms: </label>
+        <div class="col-5">
+          <form @submit.prevent="search" class="d-flex">
+            <input
+              class="form-control me-2 pb-1"
+              type="search"
+              v-model="searchTerm"
+              aria-label="Search"
+              id="search"
+            />
+            <button class="btn btn-outline-danger pb-1" type="submit">
+              Search
+            </button>
+          </form>
+        </div>
+        <h3 v-if="articles.length == 0" class="mt-4">No Results Found</h3>
+        <ul v-else class="p-0 mt-5 list-unstyled">
+          <ResultItem
+            v-for="article in articles"
+            :key="article.Nid"
+            :index="article.Nid"
+            :title="article.Naslov"
+            :fullDesc="article['Sadrzaj clanka']"
+            :image="article['Vodeca slika']"
+            :date="article['Post date']"
           />
-          <button class="btn btn-outline-danger pb-1" type="submit">
-            Search
-          </button>
-        </form>
+        </ul>
       </div>
-      <h3 v-if="articles.length == 0" class="mt-4">No Results Found</h3>
-      <ul v-else class="p-0 mt-5 list-unstyled">
-        <ResultItem
-          v-for="article in articles"
-          :key="article.Nid"
-          :index="article.Nid"
-          :title="article.Naslov"
-          :fullDesc="article['Sadrzaj clanka']"
-          :image="article['Vodeca slika']"
-          :date="article['Post date']"
-        />
-      </ul>
     </div>
-  </div>
     <TheFooter />
+  </div>
 </template>
 
 <script>
@@ -46,7 +48,7 @@ export default {
   components: {
     SecondaryHeader,
     ResultItem,
-    TheFooter
+    TheFooter,
   },
   setup() {
     const store = useStore();

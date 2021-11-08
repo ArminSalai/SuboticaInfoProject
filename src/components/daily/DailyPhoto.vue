@@ -1,28 +1,30 @@
 <template>
-  <SecondaryHeader />
-  <div class="container">
-    <h1 class="mt-5 mb-3">Daily Photo</h1>
-    <div class="row d-flex">
-      <ul class="p-0 mt-5 list-unstyled">
-        <div class="d-flex flex-wrap">
-          <PhotoItem
-            v-for="article in articles"
-            :key="article.Nid"
-            :index="article.Nid"
-            :title="article.Naslov"
-            :fullDesc="article['Sadrzaj clanka']"
-            :image="article['Vodeca slika']"
-            :date="article['Post date']"
-          />
-        </div>
-      </ul>
+  <div>
+    <SecondaryHeader />
+    <div class="container">
+      <h1 class="mt-5 mb-3">Daily Photo</h1>
+      <div class="row d-flex">
+        <ul class="p-0 mt-5 list-unstyled">
+          <div class="d-flex flex-wrap">
+            <PhotoItem
+              v-for="article in articles"
+              :key="article.Nid"
+              :index="article.Nid"
+              :title="article.Naslov"
+              :fullDesc="article['Sadrzaj clanka']"
+              :image="article['Vodeca slika']"
+              :date="article['Post date']"
+            />
+          </div>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import SecondaryHeader from "../UI/SecondaryHeader.vue";
-import PhotoItem from "../results/PhotoItem.vue";
+import PhotoItem from "./PhotoItem.vue";
 import { useStore } from "vuex";
 import { ref, computed, onMounted, onBeforeUnmount } from "vue";
 import { gsap } from "gsap";

@@ -15,7 +15,8 @@ import ZajednicaList from '../src/components/secondaryPages/ZajednicaList.vue';
 import PrivredaList from '../src/components/secondaryPages/PrivredaList.vue';
 import IntervjuList from '../src/components/secondaryPages/IntervjuList.vue';
 import PressList from '../src/components/secondaryPages/PressList.vue';
-import DailyPhoto from '../src/components/secondaryPages/DailyPhoto.vue';
+import DailyPhoto from '../src/components/daily/DailyPhoto.vue';
+import DailyDetails from '../src/components/daily/DailyDetails.vue';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -83,6 +84,10 @@ const router = createRouter({
     {
       path: '/najava/details/:Nid',
       component: MovieDetails
+    },
+    {
+      path: '/daily/details/:Nid',
+      component: DailyDetails
     },
     {
       path: '/register',

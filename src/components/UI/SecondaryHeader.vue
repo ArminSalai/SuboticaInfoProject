@@ -20,29 +20,42 @@
             <router-link to="/main" class="navbar-brand"
               ><img class="mt-3 mt-xl-0" src="../../assets/logo.png"
             /></router-link>
-            <form
-              @submit.prevent="search"
-              class="px-lg-0 px-3 ms-auto d-flex my-3"
-            >
+            <form @submit.prevent="search" class="ms-lg-auto px-lg-0 px-3 mt-3">
               <span
                 v-if="isLoggedIn"
-                class="bg-danger profilePicHeader pt-2 my-lg-0 my-3"
+                class="
+                  bg-danger
+                  profilePicHeader
+                  pt-2
+                  my-lg-0
+                  ms-lg-0
+                  my-3
+                  ms-3
+                "
                 >{{ ProfileLetter }}</span
               >
-              <div v-if="!isLoggedIn" class="mt-2">
+              <div v-if="!isLoggedIn">
                 <button
-                  class="btn btn-outline-secondary bg-light text-danger pb-1"
+                type="button"
+                  class="
+                    btn btn-outline-secondary
+                    bg-light
+                    text-danger
+                    mb-2
+                    pb-1
+                  "
                   @click.prevent="login"
                 >
                   Login
                 </button>
                 <button
+                type="button"
                   class="
                     btn btn-outline-secondary
                     bg-light
                     text-danger
+                    mb-2
                     ms-3
-                    me-3
                     pb-1
                   "
                   @click.prevent="register"
@@ -51,32 +64,30 @@
                 </button>
               </div>
               <div class="d-flex align-items-center" v-else>
-                <p class="lead h2 ms-auto mb-0 text-right">{{ username }}</p>
                 <button
+                  type="button"
                   class="
                     btn btn-outline-secondary
                     bg-light
                     text-danger
+                    mb-2
                     pb-1
-                    mx-3
                   "
                   @click.prevent="logout"
                 >
                   Logout
                 </button>
+                <p class="lead h2 ms-auto text-right">{{ username }}</p>
               </div>
-              <div class="d-flex py-lg-2">
+              <div class="d-flex">
                 <input
-                  class="form-control me-2 pb-1 my-xl-0 my-lg-2 my-4"
+                  class="form-control me-2 pb-1"
                   type="search"
                   placeholder="Search"
                   aria-label="Search"
                   v-model="searchTerm"
                 />
-                <button
-                  class="btn btn-outline-danger pb-1 my-xl-0 my-lg-2 my-4"
-                  type="submit"
-                >
+                <button class="btn btn-outline-danger pb-1" type="submit">
                   Search
                 </button>
               </div>
@@ -101,14 +112,7 @@
               <li class="nav-item secondaryHeaderBg">
                 <router-link
                   to="/main"
-                  class="
-                    nav-link
-                    h5
-                    my-2
-                    text-light
-                    mx-xl-3
-                    text-center
-                  "
+                  class="nav-link h5 my-2 text-light mx-xl-3 text-center"
                   role="button"
                   >Home</router-link
                 >
@@ -116,14 +120,7 @@
               <li class="nav-item secondaryHeaderBg">
                 <router-link
                   to="/kategorija/zajednica/sve"
-                  class="
-                    nav-link
-                    h5
-                    my-2
-                    text-light
-                    mx-xl-3
-                    text-center
-                  "
+                  class="nav-link h5 my-2 text-light mx-xl-3 text-center"
                   role="button"
                   >Zajednica</router-link
                 >
@@ -131,14 +128,7 @@
               <li class="nav-item secondaryHeaderBg">
                 <router-link
                   to="/kategorija/privreda/sve"
-                  class="
-                    nav-link
-                    h5
-                    my-2
-                    text-light
-                    mx-xl-3
-                    text-center
-                  "
+                  class="nav-link h5 my-2 text-light mx-xl-3 text-center"
                   role="button"
                   >Privreda</router-link
                 >
@@ -146,14 +136,7 @@
               <li class="nav-item secondaryHeaderBg">
                 <router-link
                   to="/kultura"
-                  class="
-                    nav-link
-                    h5
-                    my-2
-                    text-light
-                    mx-xl-3
-                    text-center
-                  "
+                  class="nav-link h5 my-2 text-light mx-xl-3 text-center"
                   role="button"
                   >Kultura</router-link
                 >
@@ -161,14 +144,7 @@
               <li class="nav-item secondaryHeaderBg">
                 <router-link
                   to="/sport"
-                  class="
-                    nav-link
-                    h5
-                    my-2
-                    text-light
-                    mx-xl-3
-                    text-center
-                  "
+                  class="nav-link h5 my-2 text-light mx-xl-3 text-center"
                   role="button"
                   >Sport</router-link
                 >
@@ -177,14 +153,7 @@
               <li class="nav-item secondaryHeaderBg">
                 <router-link
                   to="/kategorija/intervju/sve"
-                  class="
-                    nav-link
-                    h5
-                    my-2
-                    text-light
-                    mx-xl-3
-                    text-center
-                  "
+                  class="nav-link h5 my-2 text-light mx-xl-3 text-center"
                   role="button"
                   >Intervju</router-link
                 >
@@ -192,14 +161,7 @@
               <li class="nav-item secondaryHeaderBg">
                 <router-link
                   to="/kategorija/press/sve"
-                  class="
-                    nav-link
-                    h5
-                    my-2
-                    text-light
-                    mx-xl-3
-                    text-center
-                  "
+                  class="nav-link h5 my-2 text-light mx-xl-3 text-center"
                   role="button"
                   >Press</router-link
                 >
@@ -207,14 +169,7 @@
               <li class="nav-item secondaryHeaderBg">
                 <router-link
                   to="/najava"
-                  class="
-                    nav-link
-                    h5
-                    my-2
-                    text-light
-                    mx-xl-3
-                    text-center
-                  "
+                  class="nav-link h5 my-2 text-light mx-xl-3 text-center"
                   role="button"
                   >Najava</router-link
                 >
@@ -222,14 +177,7 @@
               <li class="nav-item secondaryHeaderBg">
                 <router-link
                   to="/daily"
-                  class="
-                    nav-link
-                    h5
-                    my-2
-                    text-light
-                    mx-xl-3
-                    text-center
-                  "
+                  class="nav-link h5 my-2 text-light mx-xl-3 text-center"
                   role="button"
                   >Daily Photo</router-link
                 >
@@ -243,8 +191,7 @@
                     my-2
                     text-light
                     mx-xl-3
-                    text-secondary
-                    text-dark text-center
+                    text-secondary text-dark text-center
                   "
                   role="button"
                   >Više vesti</a
@@ -253,13 +200,7 @@
               <li class="nav-item secondaryHeaderBg">
                 <router-link
                   to="/latest"
-                  class="
-                    nav-link
-                    h5
-                    my-2
-                    text-light text-center
-                    mx-xl-3
-                  "
+                  class="nav-link h5 my-2 text-light text-center mx-xl-3"
                   role="button"
                   >Arhiva</router-link
                 >

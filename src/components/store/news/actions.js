@@ -192,6 +192,12 @@ export default {
             console.error(error);
         }
     },
+    async setDailyDetails(context, payload) {
+        const response = await axios.get(`https://www.subotica.info/restful-dailyphoto`);
+        for (const data of response.data.nodes) {
+            if (data.node.Nid == payload) context.commit('setDaily', data.node);
+        }
+    },
     Reset(context) {
         context.commit('reset');
     },

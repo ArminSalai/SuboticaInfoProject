@@ -1,19 +1,21 @@
 <template>
-  <SecondaryHeader />
-  <div class="container">
-    <h1 class="mt-5 mb-3">Zajednica</h1>
-    <div class="row d-flex flex-row">
-      <ul class="p-0 mt-5 list-unstyled">
-        <ResultItem
-          v-for="article in articles"
-          :key="article.Nid"
-          :index="article.Nid"
-          :title="article.Naslov"
-          :fullDesc="article['Sadrzaj clanka']"
-          :image="article['Vodeca slika']"
-          :date="article['Post date']"
-        />
-      </ul>
+  <div>
+    <SecondaryHeader />
+    <div class="container">
+      <h1 class="mt-5 mb-3">Zajednica</h1>
+      <div class="row d-flex flex-row">
+        <ul class="p-0 mt-5 list-unstyled">
+          <ResultItem
+            v-for="article in articles"
+            :key="article.Nid"
+            :index="article.Nid"
+            :title="article.Naslov"
+            :fullDesc="article['Sadrzaj clanka']"
+            :image="article['Vodeca slika']"
+            :date="article['Post date']"
+          />
+        </ul>
+      </div>
     </div>
   </div>
 </template>

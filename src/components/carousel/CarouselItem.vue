@@ -3,9 +3,9 @@
 		class="carousel-item carousel-height bg-dark text-light"
 		:class="index == current ? 'active' : ''"
 	>
-		<router-link :to="'/details/' + index"><img
+		<router-link :to="'/details/' + index"><img v-if="imageLatest"
 			:src="imageLatest"
-			class="d-block h-100 mx-auto"
+			class="d-block h-100 mx-auto center"
 			alt="No Image Provided"
 		/></router-link>
 		<div

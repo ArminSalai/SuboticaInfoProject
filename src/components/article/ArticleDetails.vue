@@ -1,65 +1,72 @@
 <template>
-  <SecondaryHeader class="mb-5" />
-  <div class="container-fluid w-75">
-    <img v-if="image !== ''" :src="image" class="img-fluid w-100" alt="No Image Provided" />
-    <br />
-    <span class="badge bg-danger text-light rounded-pill my-3"
-      ><p class="m-0 pt-1 px-3">{{ category }}</p></span
-    >
-    <h1>{{ title }}</h1>
-    <p class="text-danger">{{ date }}</p>
-    <hr />
-    <p class="lead indented">
-      {{ desc }}
-    </p>
-    <div id="gallery"></div>
-    <p class="fw-bold mt-3">
-      Tagovi: <span class="fw-light">{{ tagovi }}</span>
-    </p>
-    <p class="fw-bold mt-3">
-      Ličnosti: <span class="fw-light">{{ licnosti }}</span>
-    </p>
-    <p class="fw-bold mt-3">
-      Autor teksta: <span class="fw-light">{{ autor }}</span>
-    </p>
-    <p class="fw-bold mt-3">
-      Fotograf: <span class="fw-light">{{ fotograf }}</span>
-    </p>
-  </div>
-  <div class="container-fluid w-75">
-    <form @submit.prevent class="bg-dark text-light p-3 pb-5">
-      <div class="row">
-        <div class="col-2"></div>
-        <div class="col-8">
-          <label for="comment" class="mb-1 text-secondary">Kommentar:</label>
-          <textarea
-            v-model="comment"
-            name="comment"
-            id="comment"
-            rows="2"
-            class="form-control"
-          ></textarea>
-        </div>
-        <div class="col d-flex align-items-end">
-          <button class="btn btn-danger text-light pt-2" @click="postComment">
-            Poslaj
-          </button>
-        </div>
-      </div>
-    </form>
-    <ul class="bg-dark list-unstyled">
-      <CommentItem
-        v-for="comm in comments"
-        :key="comm.id"
-        :username="comm.user"
-        :comment="comm.comment"
-        :likedBy="comm.likedBy"
-        :dislikedBy="comm.dislikedBy"
-        :id="comm.id"
+  <div>
+    <SecondaryHeader class="mb-5" />
+    <div class="container-fluid w-75">
+      <img
+        v-if="image !== ''"
+        :src="image"
+        class="img-fluid w-100"
+        alt="No Image Provided"
       />
-    </ul>
+      <br />
+      <span class="badge bg-danger text-light rounded-pill my-3"
+        ><p class="m-0 pt-1 px-3">{{ category }}</p></span
+      >
+      <h1>{{ title }}</h1>
+      <p class="text-danger">{{ date }}</p>
+      <hr />
+      <p class="lead indented">
+        {{ desc }}
+      </p>
+      <div id="gallery"></div>
+      <p class="fw-bold mt-3">
+        Tagovi: <span class="fw-light">{{ tagovi }}</span>
+      </p>
+      <p class="fw-bold mt-3">
+        Ličnosti: <span class="fw-light">{{ licnosti }}</span>
+      </p>
+      <p class="fw-bold mt-3">
+        Autor teksta: <span class="fw-light">{{ autor }}</span>
+      </p>
+      <p class="fw-bold mt-3">
+        Fotograf: <span class="fw-light">{{ fotograf }}</span>
+      </p>
+    </div>
+    <div class="container-fluid w-75">
+      <form @submit.prevent class="bg-dark text-light p-3 pb-5">
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-8">
+            <label for="comment" class="mb-1 text-secondary">Kommentar:</label>
+            <textarea
+              v-model="comment"
+              name="comment"
+              id="comment"
+              rows="2"
+              class="form-control"
+            ></textarea>
+          </div>
+          <div class="col d-flex align-items-end">
+            <button class="btn btn-danger text-light pt-2" @click="postComment">
+              Poslaj
+            </button>
+          </div>
+        </div>
+      </form>
+      <ul class="bg-dark list-unstyled">
+        <CommentItem
+          v-for="comm in comments"
+          :key="comm.id"
+          :username="comm.user"
+          :comment="comm.comment"
+          :likedBy="comm.likedBy"
+          :dislikedBy="comm.dislikedBy"
+          :id="comm.id"
+        />
+      </ul>
+    </div>
+    <TheFooter />
   </div>
-  <TheFooter />
 </template>
 
 <script>
@@ -121,7 +128,7 @@ export default {
     });
 
     async function postComment() {
-      if(store.getters.getUserName == "") {
+      if (store.getters.getUserName == "") {
         alert("Please try logging in first");
         return;
       }

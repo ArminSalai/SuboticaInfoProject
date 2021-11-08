@@ -1,21 +1,23 @@
 <template>
-  <SecondaryHeader />
-  <div class="container mt-5">
-    <h1>Najava Događaja</h1>
-    <u class="list-unstyled text-decoration-none">
-    <DayItem
-      v-for="movie in moives"
-      :key="movie.Nid"
-      :title="movie.Naslov"
-      :index="movie.Nid"
-      :image="movie['Vodeca slika']"
-      :loc="movie['Mesto odrzavanja']"
-      :dateStart="movie['Pocetak dogadjaja']"
-      :dateEnd="movie['Kraj dogadjaja']"
-    />
-    </u>
-  </div>
+  <div>
+    <SecondaryHeader />
+    <div class="container mt-5">
+      <h1>Najava Događaja</h1>
+      <u class="list-unstyled text-decoration-none">
+        <DayItem
+          v-for="movie in moives"
+          :key="movie.Nid"
+          :title="movie.Naslov"
+          :index="movie.Nid"
+          :image="movie['Vodeca slika']"
+          :loc="movie['Mesto odrzavanja']"
+          :dateStart="movie['Pocetak dogadjaja']"
+          :dateEnd="movie['Kraj dogadjaja']"
+        />
+      </u>
+    </div>
     <TheFooter />
+  </div>
 </template>
 
 <script>
@@ -29,7 +31,7 @@ export default {
   components: {
     SecondaryHeader,
     DayItem,
-    TheFooter
+    TheFooter,
   },
   setup() {
     const store = useStore();

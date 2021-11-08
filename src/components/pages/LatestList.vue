@@ -50,8 +50,8 @@
         </div>
       </div>
     </section>
-  </div>
     <TheFooter />
+  </div>
 </template>
 
 <script>

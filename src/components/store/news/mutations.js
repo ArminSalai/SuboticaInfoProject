@@ -29,6 +29,10 @@ export default {
     addDaily(state, payload) {
         state.daily.push(payload);
     },
+    setDaily(state, payload) {
+        state.daily = [];
+        state.daily.push(payload);
+    },
     addNajava(state, payload) {
         state.najava.push(payload);
     },

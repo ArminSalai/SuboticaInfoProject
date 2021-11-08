@@ -1,10 +1,10 @@
 <template>
   <li class="border border-secondary rounded-3 p-3 my-3">
     <div class="row">
-      <div class="col-3">
+      <div class="col-md-3 col-5">
         <router-link :to="'/details/' + index"><img :src="image" class="w-100 rounded-2 listImg" alt="No Image Provided" /></router-link>
       </div>
-      <div class="col-7 d-flex flex-column">
+      <div class="col-md-7 col-7 d-flex flex-column">
         <h3><router-link :to="'/details/' + index" class="text-decoration-none text-dark">{{ title }}</router-link></h3>
         <p class="flex-fill">{{ desc }}</p>
         <p class="mb-0 text-danger">{{ date }}</p>
