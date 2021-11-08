@@ -1,7 +1,7 @@
 <template>
   <SecondaryHeader class="mb-5" />
   <div class="container-fluid w-75">
-    <img :src="image" class="img-fluid w-100" alt="No Image Provided" />
+    <img v-if="image !== ''" :src="image" class="img-fluid w-100" alt="No Image Provided" />
     <br />
     <span class="badge bg-danger text-light rounded-pill my-3"
       ><p class="m-0 pt-1 px-3">{{ category }}</p></span

@@ -28,5 +28,8 @@ export default {
     },
     getPress(state) {
         return state.press;
+    },
+    getDaily(state) {
+        return state.daily;
     }
 }

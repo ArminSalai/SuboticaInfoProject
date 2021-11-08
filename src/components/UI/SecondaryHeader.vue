@@ -104,12 +104,9 @@
                   class="
                     nav-link
                     h5
-                    pb-0
-                    mb-0
-                    ps-0
-                    pe-3
+                    my-2
                     text-light
-                    ms-xl-3
+                    mx-xl-3
                     text-center
                   "
                   role="button"
@@ -122,12 +119,9 @@
                   class="
                     nav-link
                     h5
-                    pb-0
-                    mb-0
-                    ps-0
-                    pe-3
+                    my-2
                     text-light
-                    ms-xl-3
+                    mx-xl-3
                     text-center
                   "
                   role="button"
@@ -140,12 +134,9 @@
                   class="
                     nav-link
                     h5
-                    pb-0
-                    mb-0
-                    ps-0
-                    pe-3
+                    my-2
                     text-light
-                    ms-xl-3
+                    mx-xl-3
                     text-center
                   "
                   role="button"
@@ -158,12 +149,9 @@
                   class="
                     nav-link
                     h5
-                    pb-0
-                    mb-0
-                    ps-0
-                    pe-3
+                    my-2
                     text-light
-                    ms-xl-3
+                    mx-xl-3
                     text-center
                   "
                   role="button"
@@ -176,12 +164,9 @@
                   class="
                     nav-link
                     h5
-                    pb-0
-                    mb-0
-                    ps-0
-                    pe-3
+                    my-2
                     text-light
-                    ms-xl-3
+                    mx-xl-3
                     text-center
                   "
                   role="button"
@@ -195,12 +180,9 @@
                   class="
                     nav-link
                     h5
-                    pb-0
-                    mb-0
-                    ps-0
-                    pe-3
+                    my-2
                     text-light
-                    ms-xl-3
+                    mx-xl-3
                     text-center
                   "
                   role="button"
@@ -213,12 +195,9 @@
                   class="
                     nav-link
                     h5
-                    pb-0
-                    mb-0
-                    ps-0
-                    pe-3
+                    my-2
                     text-light
-                    ms-xl-3
+                    mx-xl-3
                     text-center
                   "
                   role="button"
@@ -231,12 +210,9 @@
                   class="
                     nav-link
                     h5
-                    pb-0
-                    mb-0
-                    ps-0
-                    pe-3
+                    my-2
                     text-light
-                    ms-xl-3
+                    mx-xl-3
                     text-center
                   "
                   role="button"
@@ -249,12 +225,9 @@
                   class="
                     nav-link
                     h5
-                    pb-0
-                    mb-0
-                    ps-0
-                    pe-3
+                    my-2
                     text-light
-                    ms-xl-3
+                    mx-xl-3
                     text-center
                   "
                   role="button"
@@ -267,13 +240,11 @@
                     nav-link
                     disabled
                     h5
-                    pb-0
-                    mb-0
+                    my-2
+                    text-light
+                    mx-xl-3
                     text-secondary
-                    ms-xl-3
                     text-dark text-center
-                    ps-0
-                    pe-3
                   "
                   role="button"
                   >Više vesti</a
@@ -285,14 +256,9 @@
                   class="
                     nav-link
                     h5
-                    pb-0
-                    mb-0
-                    ps-0
-                    ps-xl-3
-                    pe-3
+                    my-2
                     text-light text-center
-                    mb-xl-0
-                    mb-3
+                    mx-xl-3
                   "
                   role="button"
                   >Arhiva</router-link

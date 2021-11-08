@@ -113,7 +113,7 @@ export default {
     async setNajavaDetails(context, payload) {
         const response = await axios.get(`https://www.subotica.info/restful-najava`);
         for (const data of response.data.nodes) {
-            if(data.node.Nid == payload) context.commit('setNajava', data.node);
+            if (data.node.Nid == payload) context.commit('setNajava', data.node);
         }
     },
     async setPanoramica(context) {
@@ -170,9 +170,24 @@ export default {
     },
     async loadPressItems(context, payload) {
         try {
-            const response = await axios.get(`https://www.subotica.info/restful-press?page=${payload}`);
+            const response = await axios.get(`https://www.subotica.info/restful-press?page=${payload.page}`);
+            if (payload.category.value)
+                for (let i = 0; i < response.data.nodes.length; i++) {
+                    if (response.data.nodes[i].node.Kategorija == payload.category.value)
+                        context.commit('addPress', response.data.nodes[i].node);
+                }
+            else
+                for (let i = 0; i < response.data.nodes.length; i++)
+                    context.commit('addPress', response.data.nodes[i].node);
+        } catch (error) {
+            console.error(error);
+        }
+    },
+    async loadDailyItems(context, payload) {
+        try {
+            const response = await axios.get(`https://www.subotica.info/restful-dailyphoto?page=${payload}`);
             for (let i = 0; i < response.data.nodes.length; i++)
-                context.commit('addPress', response.data.nodes[i].node);
+                context.commit('addDaily', response.data.nodes[i].node);
         } catch (error) {
             console.error(error);
         }

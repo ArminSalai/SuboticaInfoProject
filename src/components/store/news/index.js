@@ -13,6 +13,7 @@ export default {
             privreda: [],
             intervju: [],
             press: [],
+            daily: [],
             panoramica: {},
             searchTerm: ''
         }

@@ -26,6 +26,9 @@ export default {
     addPress(state, payload) {
         state.press.push(payload);
     },
+    addDaily(state, payload) {
+        state.daily.push(payload);
+    },
     addNajava(state, payload) {
         state.najava.push(payload);
     },
@@ -48,6 +51,10 @@ export default {
         state.cultures = [],
         state.zajednica = [],
         state.najava = [],
+        state.privreda = [],
+        state.intervju = [],
+        state.press = [],
+        state.daily = [],
         state.panoramica = {},
         state.searchTerm = ''
     }

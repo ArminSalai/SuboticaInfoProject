@@ -15,6 +15,7 @@ import ZajednicaList from '../src/components/secondaryPages/ZajednicaList.vue';
 import PrivredaList from '../src/components/secondaryPages/PrivredaList.vue';
 import IntervjuList from '../src/components/secondaryPages/IntervjuList.vue';
 import PressList from '../src/components/secondaryPages/PressList.vue';
+import DailyPhoto from '../src/components/secondaryPages/DailyPhoto.vue';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -68,8 +69,16 @@ const router = createRouter({
       component: PressList
     },
     {
+      path: '/kategorija/press/:category',
+      component: PressList
+    },
+    {
       path: '/najava',
       component: EventAnns
+    },
+    {
+      path: '/daily',
+      component: DailyPhoto
     },
     {
       path: '/najava/details/:Nid',
