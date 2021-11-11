@@ -41,6 +41,11 @@ export default {
   -webkit-backdrop-filter: blur(8px);
 }
 
+.bg-pattern {
+  background: url("../src/assets/papyrus.png");
+  background-size: 38rem;
+}
+
 .bg-news-title:hover {
   background: #101010f0;
 }

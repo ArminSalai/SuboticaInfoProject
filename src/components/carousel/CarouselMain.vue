@@ -140,6 +140,6 @@ export default {
 
 <style scoped>
   .rounded-4 {
-    border-radius: 1rem;
+    border-radius: 1.5rem;
   }
 </style>
