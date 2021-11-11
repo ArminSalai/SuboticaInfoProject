@@ -1,6 +1,5 @@
 <template>
-  <div class="container w-caru">
-    <h1 class="mt-5 py-3 mb-0 ps-4 bg-black text-light">Aktuelno</h1>
+  <div class="container mt-5">
     <div class="container-fluid p-0">
       <div
         id="carouselExampleCaptions"
@@ -52,7 +51,7 @@
             class="visually-hidden"
           ></button>
         </div>
-        <div class="carousel-inner">
+        <div class="carousel-inner rounded-4">
           <CarouselItem
             v-for="article in latestArticles"
             :key="article.Nid"
@@ -63,6 +62,23 @@
             :imageLatest="article['Vodeca slika']"
             :dateLatest="article['Post date']"
           />
+          <div
+            v-if="latestArticles.length < 4"
+            class="carousel-height bg-dark d-flex justify-content-center align-items-center"
+          >
+            <div
+              class="
+                spinner-border
+                text-danger
+                d-flex
+                mx-auto
+                align-slef-center
+              "
+              role="status"
+            >
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
         </div>
         <button
           class="carousel-control-prev"
@@ -73,7 +89,8 @@
           <div
             class="
               bg-news-title
-              rounded rounded-circle
+              rounded rounded-2
+              h-25
               p-2
               d-flex
               justify-items-center
@@ -93,7 +110,8 @@
           <div
             class="
               bg-news-title
-              rounded rounded-circle
+              rounded rounded-2
+              h-25
               p-2
               d-flex
               justify-items-center
@@ -119,3 +137,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+  .rounded-4 {
+    border-radius: 1rem;
+  }
+</style>

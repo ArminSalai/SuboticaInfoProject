@@ -16,11 +16,11 @@
         <router-link to="/main" class="navbar-brand"
           ><img class="mt-3 mt-xl-0" src="../../assets/logo.png"
         /></router-link>
-        <ul class="navbar-nav ms-3 me-auto mb-lg-0 my-3 my-xl-0">
+        <ul class="navbar-nav ms-auto me-3 mb-lg-0 my-3 my-xl-0 fw-light">
           <li class="nav-item">
             <router-link
               to="/latest"
-              class="nav-link h5 pb-0 mb-0 text-danger text-center"
+              class="nav-link h5 pb-0 mb-0 text-dark text-center"
               role="button"
               >Poslednje vesti</router-link
             >
@@ -28,7 +28,7 @@
           <li class="nav-item">
             <router-link
               to="/sport"
-              class="nav-link h5 pb-0 mb-0 text-danger ms-xl-3 text-center"
+              class="nav-link h5 pb-0 mb-0 text-dark ms-xl-2 text-center"
               role="button"
               >Sport</router-link
             >
@@ -36,7 +36,7 @@
           <li class="nav-item">
             <router-link
               to="/kultura"
-              class="nav-link h5 pb-0 mb-0 text-danger ms-xl-3 text-center"
+              class="nav-link h5 pb-0 mb-0 text-dark ms-xl-2 text-center"
               role="button"
               >Kultura</router-link
             >
@@ -44,66 +44,84 @@
           <li class="nav-item">
             <router-link
               to="/najava"
-              class="nav-link h5 pb-0 mb-0 text-danger ms-xl-3 text-center"
+              class="nav-link h5 pb-0 mb-0 text-dark ms-xl-2 text-center"
               role="button"
               >Najava</router-link
             >
           </li>
           <li class="nav-item">
             <a
-              class="nav-link disabled h5 pb-0 mb-0 text-secondary ms-xl-3 text-center"
+              class="
+                nav-link
+                disabled
+                h5
+                pb-0
+                mb-0
+                text-secondary
+                ms-xl-2
+                text-center
+              "
               role="button"
               >Više vesti</a
             >
           </li>
         </ul>
-        <span v-if="isLoggedIn" class="bg-danger profilePicHeader pt-2 my-lg-0 ms-lg-0 my-3 ms-3">{{
-          ProfileLetter
-        }}</span>
-        <form @submit.prevent="search" class="px-lg-0 px-3">
-          <div v-if="!isLoggedIn">
-            <button
-              class="btn btn-outline-secondary bg-light text-danger mb-2 pb-1"
-              @click.prevent="login"
-            >
-              Login
-            </button>
-            <button
-              class="
-                btn btn-outline-secondary
-                bg-light
-                text-danger
-                mb-2
-                ms-3
-                pb-1
-              "
-              @click.prevent="register"
-            >
-              Register
-            </button>
-          </div>
-          <div class="d-flex align-items-center" v-else>
-            <button
-              class="btn btn-outline-secondary bg-light text-danger mb-2 pb-1"
-              @click.prevent="logout"
-            >
-              Logout
-            </button>
-            <p class="lead h2 ms-auto text-right">{{ username }}</p>
-          </div>
-          <div class="d-flex">
-            <input
-              class="form-control me-2 pb-1"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-              v-model="searchTerm"
-            />
-            <button class="btn btn-outline-danger pb-1" type="submit">
-              Search
-            </button>
-          </div>
-        </form>
+        <div class="d-flex justify-content-center max-cont">
+          <form @submit.prevent="search" class="px-lg-0 px-3">
+            <div class="d-flex w-50 mt-2 rounded-3 ms-lg-auto me-xl-3 mx-auto">
+              <input
+                type="text"
+                class="form-control rounded-start border-0"
+                placeholder="Search"
+                aria-label="Search"
+                aria-describedby="button-addon2"
+                v-model="searchTerm"
+              />
+              <button
+                class="
+                  form-control
+                  rounded-end
+                  border-0
+                  mx-auto
+                  w-25
+                  ps-0
+                  pe-3
+                  text-dark
+                "
+                type="submit"
+                id="button-addon2"
+              >
+                <i class="bi bi-search"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="d-flex justify-content-center">
+          <button
+            v-if="isLoggedIn"
+            class="btn btn-danger mx-2 pb-1 my-xl-0 my-3"
+            @click.prevent="logout"
+          >
+            Logout
+          </button>
+        </div>
+        <div v-if="!isLoggedIn" class="my-3 d-flex justify-content-center">
+          <button class="btn btn-danger pb-1 mt-2" @click.prevent="login">
+            Login
+          </button>
+          <button
+            class="btn btn-danger mx-2 pb-1 mt-2"
+            @click.prevent="register"
+          >
+            Register
+          </button>
+        </div>
+        <div class="d-flex align-items-center justify-content-center" v-else>
+          <p class="lead h2 mx-3 text-right mb-0 mt-2">{{ username }}</p>
+          <span class="bg-danger profilePicHeader my-xl-auto ms-lg-0 my-3">
+            {{ ProfileLetter }}
+          </span>
+        </div>
       </div>
     </div>
   </nav>
@@ -147,13 +165,13 @@ export default {
 
     onUpdated(() => {
       if (isLoggedIn.value) {
-      ProfileLetter.value = (username.value);
-      ProfileLetter.value = ProfileLetter.value[0].toUpperCase();
-    }
-    })
-    
+        ProfileLetter.value = username.value;
+        ProfileLetter.value = ProfileLetter.value[0].toUpperCase();
+      }
+    });
+
     if (isLoggedIn.value) {
-      ProfileLetter.value = (username.value);
+      ProfileLetter.value = username.value;
       ProfileLetter.value = ProfileLetter.value[0].toUpperCase();
     }
 
@@ -170,3 +188,23 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.nav-link:hover {
+  animation: toRed 0.5s ease-out forwards;
+}
+
+@keyframes toRed {
+  to {
+    background-image: radial-gradient(
+      circle farthest-corner at 10% 20%,
+      rgba(247, 87, 0, 1) 0%,
+      rgba(249, 0, 0, 1) 90.1%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    padding-bottom: 5px;
+  }
+}
+</style>

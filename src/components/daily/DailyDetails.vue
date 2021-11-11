@@ -17,7 +17,7 @@
 <script>
 import { useStore } from "vuex";
 import { useRoute } from "vue-router";
-import { onBeforeMount, computed } from "vue";
+import { onMounted, computed } from "vue";
 import SecondaryHeader from "../UI/SecondaryHeader.vue";
 import TheFooter from "../UI/TheFooter.vue";
 
@@ -30,20 +30,36 @@ export default {
     const store = useStore();
     const route = useRoute();
 
-    async function getArticle() {
-      await store.dispatch("setDailyDetails", route.params.Nid);
+    function getArticle() {
+      const page = localStorage.getItem('Page');
+      store.dispatch('setDailyDetails', {
+        Nid: route.params.Nid,
+        Page: page,
+      });
     }
 
     const article = computed(() => {
       return store.getters.getDaily[0];
     });
 
-    const title = computed(() => { if(article.value == undefined) return null; else return article.value.Naslov ;});
-    const desc = computed(() => { if(article.value == undefined) return null; else return article.value["Sadrzaj clanka"];});
-    const image = computed(() => { if(article.value == undefined) return null; else return article.value["Vodeca slika"];});
-    const tagovi = computed(() => { if(article.value == undefined) return null; else return article.value.Tagovi;});
+    const title = computed(() => {
+      if (article.value == undefined) return null;
+      else return article.value.Naslov;
+    });
+    const desc = computed(() => {
+      if (article.value == undefined) return null;
+      else return article.value["Sadrzaj clanka"];
+    });
+    const image = computed(() => {
+      if (article.value == undefined) return null;
+      else return article.value["Vodeca slika"];
+    });
+    const tagovi = computed(() => {
+      if (article.value == undefined) return null;
+      else return article.value.Tagovi;
+    });
 
-    onBeforeMount(async function () {
+    onMounted(async function () {
       await getArticle();
     });
 

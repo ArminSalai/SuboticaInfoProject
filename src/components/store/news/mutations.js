@@ -53,17 +53,21 @@ export default {
     setMovieDays(state, payload) {
         state.movieDays = payload;
     },
+    setPage(state, payload) {
+        state.page.push({ Nid: payload.Nid, Page: payload.Page });
+    },
     reset(state) {
-        state.article = [],
-        state.sports = [],
-        state.cultures = [],
-        state.zajednica = [],
-        state.najava = [],
-        state.privreda = [],
-        state.intervju = [],
-        state.press = [],
-        state.daily = [],
-        state.panoramica = {},
-        state.searchTerm = ''
+        state.article = [];
+        state.sports = [];
+        state.cultures = [];
+        state.zajednica = [];
+        state.najava = [];
+        state.privreda = [];
+        state.intervju = [];
+        state.press = [];
+        state.daily = [];
+        state.page = [];
+        state.panoramica = {};
+        state.searchTerm = '';
     }
 }

@@ -29,6 +29,9 @@ export default {
     getPress(state) {
         return state.press;
     },
+    getPage(state) {
+        return state.page;
+    },
     getDaily(state) {
         return state.daily;
     }

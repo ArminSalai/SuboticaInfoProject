@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+import { gsap } from 'gsap';
 import MainPage from '../src/components/pages/MainPage.vue';
 import ArticleDetails from '../src/components/article/ArticleDetails.vue';
 import SearchResults from '../src/components/pages/SearchResults.vue';
@@ -18,6 +19,7 @@ import PressList from '../src/components/secondaryPages/PressList.vue';
 import DailyPhoto from '../src/components/daily/DailyPhoto.vue';
 import DailyDetails from '../src/components/daily/DailyDetails.vue';
 import IntervjuDetails from '../src/components/intervju/IntervjuDetails.vue';
+import ScrollToPlugin from "gsap/ScrollToPlugin";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -107,6 +109,12 @@ const router = createRouter({
       redirect: '/main'
     }
   ]
-})
+});
+
+gsap.registerPlugin(ScrollToPlugin);
+
+router.afterEach(() => {
+  gsap.to(window, { duration: 0.2, scrollTo: 0 });
+});
 
 export default router;

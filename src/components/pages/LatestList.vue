@@ -18,6 +18,7 @@
         <div class="input-group mb-3">
           <button
             class="btn btn-dark text-light pt-2"
+            :class="disabledFirst"
             @click="first"
             type="button"
           >
@@ -25,6 +26,7 @@
           </button>
           <button
             class="btn btn-dark text-light pt-2"
+            :class="disabledFirst"
             @click="prev"
             type="button"
           >
@@ -35,6 +37,7 @@
           </button>
           <button
             class="btn btn-dark text-light pt-2"
+            :class="disabledLast"
             @click="next"
             type="button"
           >
@@ -42,6 +45,7 @@
           </button>
           <button
             class="btn btn-dark text-light pt-2"
+            :class="disabledLast"
             @click="last"
             type="button"
           >
@@ -81,14 +85,22 @@ export default {
       return store.getters.getArticles;
     });
 
+    const disabledLast = computed(() => {
+      return page.value > 399? 'disabled' : '';
+    })
+
+    const disabledFirst = computed(() => {
+      return page.value < 1? 'disabled' : '';
+    })
+
     async function scrolled() {
       await store.dispatch("setLatest", page.value);
       await getLatest(page.value);
-      if(page.value > 3 && page.value < 97) {
+      if(page.value > 3 && page.value < 394) {
         nums.value = [...Array(7).keys()].map(i => i + page.value - 3);
       }
-      else if(page.value > 100) {
-        nums.value = [...Array(7).keys()].map(i => i + 100);
+      else if(page.value > 395) {
+        nums.value = [...Array(7).keys()].map(i => i + 394);
       }
       else if(page.value < 3) {
         nums.value = [1, 2, 3, 4, 5, 6, 7];
@@ -119,7 +131,7 @@ export default {
     }
 
     async function last() {
-      page.value = 100;
+      page.value = 400;
       scrolled();
     }
 
@@ -139,7 +151,9 @@ export default {
       page,
       set,
       first,
-      last
+      last,
+      disabledFirst,
+      disabledLast
     };
   },
 };

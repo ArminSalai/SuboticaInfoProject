@@ -3,12 +3,13 @@
     <h6 class="fst-italic">
       <router-link
         :to="'/daily/details/' + index"
+        @click="savePage"
         class="text-decoration-none text-secondary"
         >{{ title }}</router-link
       >
       - {{ date }}
     </h6>
-    <router-link :to="'/daily/details/' + index"
+    <router-link :to="'/daily/details/' + index" @click="savePage"
       ><img
         :src="image"
         class="w-100 rounded-2 listImg text-secondary"
@@ -18,8 +19,22 @@
 </template>
 
 <script>
+import { useStore } from 'vuex';
+
 export default {
   props: ["index", "title", "image", "date"],
+  setup(props) {
+    const store = useStore();
+    function savePage() {
+      const page = store.getters.getPage.find(
+        (el) => el.Nid == props.index
+      ).Page;
+      localStorage.setItem('Page', page);
+    }
+    return {
+      savePage
+    }
+  }
 };
 </script>
 

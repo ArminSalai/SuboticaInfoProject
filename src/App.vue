@@ -16,8 +16,10 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
@@ -27,7 +29,6 @@ export default {
 .fade-leave-active {
   transition: opacity 0.25s ease;
 }
-
 
 .fade-enter-from,
 .fade-leave-to {
@@ -46,7 +47,7 @@ export default {
 
 .carousel-height {
   width: 100%;
-  height: 50vh;
+  height: 30rem;
 }
 
 .bg-black {
@@ -108,10 +109,10 @@ router-view {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 3vw;
-  height: 3vw;
+  width: 2.5vw;
+  height: 2.5vw;
   margin-right: 1rem;
-  font-size: 2.5rem;
+  font-size: 2vw;
   overflow: hidden;
   border-radius: 50%;
   color: white;
@@ -171,8 +172,9 @@ router-view {
     width: 100%;
   }
   .profilePicHeader {
-    width: 7vw;
-    height: 7vw;
+    width: 4rem;
+    height: 4rem;
+    font-size: 3rem;
   }
 }
 

@@ -162,8 +162,10 @@ export default {
     async loadIntervjuItems(context, payload) {
         try {
             const response = await axios.get(`https://www.subotica.info/restful-intervju?page=${payload}`);
-            for (let i = 0; i < response.data.nodes.length; i++)
+            for (let i = 0; i < response.data.nodes.length; i++) {
                 context.commit('addIntervju', response.data.nodes[i].node);
+                context.commit('setPage', { Nid: response.data.nodes[i].node.Nid, Page: payload });
+            }
         } catch (error) {
             console.error(error);
         }
@@ -186,22 +188,24 @@ export default {
     async loadDailyItems(context, payload) {
         try {
             const response = await axios.get(`https://www.subotica.info/restful-dailyphoto?page=${payload}`);
-            for (let i = 0; i < response.data.nodes.length; i++)
+            for (let i = 0; i < response.data.nodes.length; i++) {
                 context.commit('addDaily', response.data.nodes[i].node);
+                context.commit('setPage', { Nid: response.data.nodes[i].node.Nid, Page: payload });
+            }
         } catch (error) {
             console.error(error);
         }
     },
     async setDailyDetails(context, payload) {
-        const response = await axios.get(`https://www.subotica.info/restful-dailyphoto`);
+        const response = await axios.get(`https://www.subotica.info/restful-dailyphoto?page=${payload.Page}`);
         for (const data of response.data.nodes) {
-            if (data.node.Nid == payload) context.commit('setDaily', data.node);
+            if (data.node.Nid == payload.Nid) context.commit('setDaily', data.node);
         }
     },
     async setIntervjuDetails(context, payload) {
-        const response = await axios.get(`https://www.subotica.info/restful-intervju`);
+        const response = await axios.get(`https://www.subotica.info/restful-intervju?page=${payload.Page}`);
         for (const data of response.data.nodes) {
-            if (data.node.Nid == payload) context.commit('setIntervju', data.node);
+            if (data.node.Nid == payload.Nid) context.commit('setIntervju', data.node);
         }
     },
     Reset(context) {

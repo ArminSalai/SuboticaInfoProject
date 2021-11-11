@@ -1,14 +1,21 @@
 <template>
   <div>
     <TheHeader />
-    <section>
-      <CarouselMain :latest-articles="latestArticles" :current="current" />
-    </section>
+    <div class="container">
+      <section class="row">
+        <h1 class="mt-4 mb-3 py-3 mb-0 ps-4 col-4">Aktuelno</h1>
+        <CarouselMain
+          class="ms-0 col-lg-8 col-12"
+          :latest-articles="latestArticles"
+          :current="current"
+        />
+      </section>
+    </div>
     <section class="bg-dark text-light mt-5">
       <div class="container">
         <p class="display-2 m-0 pt-5">Zajednica</p>
         <div v-if="loadedZajednica" class="row justify-content-center">
-          <div class="col-7 mt-5 position-relative">
+          <div class="col-lg-7 col-12 mt-5 position-relative">
             <router-link :to="'/details/' + zajednica.Nid"
               ><img
                 class="w-100"
@@ -34,13 +41,17 @@
             </h3>
           </div>
         </div>
-        <div v-else class="spinner-border text-danger d-flex mx-auto align-slef-center" role="status">
+        <div
+          v-else
+          class="spinner-border text-danger d-flex mx-auto align-slef-center"
+          role="status"
+        >
           <span class="visually-hidden">Loading...</span>
         </div>
-        <hr class="mt-5 mx-3" />
+        <hr class="mt-5 mx-3 bg-danger" />
         <p class="display-2 m-0 pt-5">Sport</p>
         <div v-if="loadedSport" class="row justify-content-center">
-          <div class="col-7 mt-5 position-relative">
+          <div class="col-lg-7 col-12 mt-5 position-relative">
             <router-link :to="'/details/' + sport.Nid">
               <img
                 class="w-100"
@@ -66,13 +77,17 @@
             </h3>
           </div>
         </div>
-        <div v-else class="spinner-border text-danger d-flex mx-auto align-slef-center" role="status">
+        <div
+          v-else
+          class="spinner-border text-danger d-flex mx-auto align-slef-center"
+          role="status"
+        >
           <span class="visually-hidden">Loading...</span>
         </div>
-        <hr class="mt-5 mx-3" />
+        <hr class="mt-5 mx-3 bg-danger" />
         <p class="display-2 m-0 pt-5">Kultura</p>
         <div v-if="loadedKultura" class="row justify-content-center pb-5">
-          <div class="col-7 mt-5 position-relative">
+          <div class="col-lg-7 col-12 mt-5 position-relative">
             <router-link :to="'/details/' + kultura.Nid">
               <img
                 class="w-100"
@@ -98,7 +113,11 @@
             </h3>
           </div>
         </div>
-        <div v-else class="spinner-border text-danger d-flex mx-auto align-slef-center" role="status">
+        <div
+          v-else
+          class="spinner-border text-danger d-flex mx-auto align-slef-center"
+          role="status"
+        >
           <span class="visually-hidden">Loading...</span>
         </div>
       </div>
@@ -187,8 +206,27 @@ export default {
       kultura,
       loadedZajednica,
       loadedSport,
-      loadedKultura
+      loadedKultura,
     };
   },
 };
 </script>
+
+<style scoped>
+h1 {
+  font: 700 4.5rem "Open Sans", sans-serif;
+}
+
+p {
+  background-image: radial-gradient(
+    circle farthest-corner at 10% 20%,
+    rgba(249, 0, 0, 1) 0%,
+    rgba(247, 87, 0, 1) 90%
+  );
+  background-size: cover;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  padding-bottom: 5px;
+}
+</style>

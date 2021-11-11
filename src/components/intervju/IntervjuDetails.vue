@@ -33,7 +33,8 @@ export default {
     const route = useRoute();
 
     async function getArticle() {
-      await store.dispatch("setIntervjuDetails", route.params.Nid);
+      const page = localStorage.getItem('Page');
+      await store.dispatch("setIntervjuDetails", { Nid: route.params.Nid, Page: page});
     }
 
     const article = computed(() => {

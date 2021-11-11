@@ -14,6 +14,7 @@ export default {
             intervju: [],
             press: [],
             daily: [],
+            page: [],
             panoramica: {},
             searchTerm: ''
         }
