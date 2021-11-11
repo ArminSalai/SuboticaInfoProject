@@ -17,81 +17,73 @@
         </div>
         <div>
           <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <div></div>
             <router-link to="/main" class="navbar-brand"
               ><img class="mt-3 mt-xl-0" src="../../assets/logo.png"
             /></router-link>
-            <form @submit.prevent="search" class="ms-lg-auto px-lg-0 px-3 mt-3">
-              <span
+            <div class="d-flex align-items-center ms-auto">
+            <div class="d-flex justify-content-center max-cont">
+              <form @submit.prevent="search" class="px-lg-0 px-3">
+                <div
+                  class="d-flex w-50 mt-2 rounded-3 ms-lg-auto me-xl-3 mx-auto"
+                >
+                  <input
+                    type="text"
+                    class="form-control rounded-start border-0"
+                    placeholder="Search"
+                    aria-label="Search"
+                    aria-describedby="button-addon2"
+                    v-model="searchTerm"
+                  />
+                  <button
+                    class="
+                      form-control
+                      rounded-end
+                      border-0
+                      mx-auto
+                      w-25
+                      ps-0
+                      pe-3
+                      text-dark
+                    "
+                    type="submit"
+                    id="button-addon2"
+                  >
+                    <i class="bi bi-search"></i>
+                  </button>
+                </div>
+              </form>
+            </div>
+            <div class="d-flex justify-content-center">
+              <button
                 v-if="isLoggedIn"
-                class="
-                  bg-danger
-                  profilePicHeader
-                  pt-2
-                  my-lg-0
-                  ms-lg-0
-                  my-3
-                  ms-3
-                "
-                >{{ ProfileLetter }}</span
+                class="btn btn-danger mx-2 pb-1 my-xl-0 my-3"
+                @click.prevent="logout"
               >
-              <div v-if="!isLoggedIn">
-                <button
-                type="button"
-                  class="
-                    btn btn-outline-secondary
-                    bg-light
-                    text-danger
-                    mb-2
-                    pb-1
-                  "
-                  @click.prevent="login"
-                >
-                  Login
-                </button>
-                <button
-                type="button"
-                  class="
-                    btn btn-outline-secondary
-                    bg-light
-                    text-danger
-                    mb-2
-                    ms-3
-                    pb-1
-                  "
-                  @click.prevent="register"
-                >
-                  Register
-                </button>
-              </div>
-              <div class="d-flex align-items-center" v-else>
-                <button
-                  type="button"
-                  class="
-                    btn btn-outline-secondary
-                    bg-light
-                    text-danger
-                    mb-2
-                    pb-1
-                  "
-                  @click.prevent="logout"
-                >
-                  Logout
-                </button>
-                <p class="lead h2 ms-auto text-right">{{ username }}</p>
-              </div>
-              <div class="d-flex">
-                <input
-                  class="form-control me-2 pb-1"
-                  type="search"
-                  placeholder="Search"
-                  aria-label="Search"
-                  v-model="searchTerm"
-                />
-                <button class="btn btn-outline-danger pb-1" type="submit">
-                  Search
-                </button>
-              </div>
-            </form>
+                Logout
+              </button>
+            </div>
+            <div v-if="!isLoggedIn" class="my-3 d-flex justify-content-center">
+              <button class="btn btn-danger pb-1 mt-2" @click.prevent="login">
+                Login
+              </button>
+              <button
+                class="btn btn-danger mx-2 pb-1 mt-2"
+                @click.prevent="register"
+              >
+                Register
+              </button>
+            </div>
+            <div
+              class="d-flex align-items-center justify-content-center"
+              v-else
+            >
+              <p class="lead h2 mx-3 text-right mb-0 mt-2">{{ username }}</p>
+              <span class="bg-danger profilePicHeader my-xl-auto ms-lg-0 my-3">
+                {{ ProfileLetter }}
+              </span>
+            </div>
+            </div>
           </div>
         </div>
         <div class="mt-lg-2 mt-3 py-xl-2">
@@ -186,12 +178,11 @@
                 <a
                   class="
                     nav-link
-                    disabled
                     h5
                     my-2
-                    text-light
                     mx-xl-3
-                    text-secondary text-dark text-center
+                    disabled
+                    text-secondary text-center
                   "
                   role="button"
                   >Više vesti</a

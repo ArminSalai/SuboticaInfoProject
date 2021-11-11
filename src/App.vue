@@ -161,15 +161,11 @@ router-view {
 }
 
 .secondaryHeaderBg {
-  background-color: #d00b0b;
-}
-
-.sHBg {
-  background-color: #d00b0b;
+  background-color: #202020;
 }
 
 .secondaryHeaderBg:hover {
-  background-color: #a00808;
+  background-color: #0c0c0c;
 }
 
 @media (max-width: 1199.98px) {
