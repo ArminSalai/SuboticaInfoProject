@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bg-pattern">
     <SecondaryHeader />
     <section>
       <div class="container">
@@ -15,7 +15,7 @@
           />
         </ul>
 
-        <div class="input-group mb-3">
+        <div class="input-group my-5">
           <button
             class="btn btn-dark text-light pt-2"
             :class="disabledFirst"
@@ -32,7 +32,7 @@
           >
             Predhodna
           </button>
-          <button v-for="num in nums" :key="num" @click="set(num)" class="btn btn-outline-secondary pt-2" :class="num == page? 'active': ''" type="button">
+          <button v-for="num in nums" :key="num" @click="set(num)" class="btn btn-outline-light pt-2" :class="num == page? 'active': ''" type="button">
             {{ num }}
           </button>
           <button

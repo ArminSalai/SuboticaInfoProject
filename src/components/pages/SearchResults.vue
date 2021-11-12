@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div class="bg-pattern">
     <SecondaryHeader />
     <div class="container">
-      <h1 class="mt-5 mb-3">Search Results:</h1>
+      <h1 class="mt-5 mb-3 display-2 text-light">Search Results:</h1>
       <div class="row d-flex flex-row">
-        <label for="search">Search terms: </label>
+        <label for="search" class="mb-2 text-light">Search terms: </label>
         <div class="col-5">
           <form @submit.prevent="search" class="d-flex">
             <input

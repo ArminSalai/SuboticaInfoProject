@@ -1,15 +1,16 @@
 <template>
-  <div>
+  <div class="bg-pattern">
     <SecondaryHeader class="mb-5" />
-    <div class="container-fluid w-75">
-      <h1>{{ title }}</h1>
-      <p class="lead indented mt-5">
+    <div class="container">
+      <h1 class="display-2 text-light my-2">{{ title }}</h1>
+      <p class="lead indented mt-5 text-light">
         {{ desc }}
       </p>
       <img :src="image" class="img-fluid w-50 m-auto" alt="No Image Provided" />
       <br />
-      <p class="mt-3"><b>Tagovi: </b> {{ tagovi }}</p>
+      <p class="mt-3 text-light"><b>Tagovi: </b> {{ tagovi }}</p>
     </div>
+    <div class="space"></div>
     <TheFooter />
   </div>
 </template>

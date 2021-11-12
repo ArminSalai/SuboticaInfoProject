@@ -1,14 +1,14 @@
 <template>
-  <div>
+  <div class="bg-pattern">
     <SecondaryHeader />
     <div class="container mb-5">
-      <div v-if="sports[0]" class="mt-5">
+      <div v-if="sports[0]" class="my-5">
         <router-link
           :to="'/details/' + sports[0].Nid"
-          class="text-decoration-none h2 text-dark"
+          class="text-decoration-none display-3 text-light"
           >{{ sports[0].Naslov }}</router-link
         >
-        <div class="row">
+        <div class="row mt-4">
           <router-link :to="'/details/' + sports[0].Nid">
             <img
               :src="sports[0]['Vodeca slika']"
@@ -16,12 +16,12 @@
               alt="No Image Avaliable"
             />
           </router-link>
-          <div class="row">
-            <p class="lead indented">{{ desc }}</p>
+          <div class="row mt-3">
+            <p class="lead indented text-light">{{ desc }}</p>
           </div>
         </div>
       </div>
-      <ul class="list-unstyled mt-5">
+      <ul class="list-unstyled p-0 mt-5">
         <CategoryItem
           v-for="sport in sports"
           :key="sport.Nid"
@@ -41,7 +41,7 @@
           bg-danger
           rounded-2
           p-3
-          pt-4
+          pt-3
         "
         >Ostale vesti</router-link
       >

@@ -1,23 +1,23 @@
 <template>
-  <div>
+  <div class="bg-pattern">
     <SecondaryHeader />
     <div class="container mb-5">
       <div v-if="infos && infos[0]" class="mt-5">
         <router-link
           :to="'/details/' + infos[0].Nid"
-          class="text-decoration-none h2 text-dark"
+          class="text-decoration-none h2 display-2 text-light"
           >{{ infos[0].Naslov }}</router-link
         >
         <div class="row">
           <router-link :to="'/details/' + infos[0].Nid">
             <img
               :src="infos[0]['Vodeca slika']"
-              class="w-100 img-fluid"
+              class="w-100 img-fluid mt-3"
               alt="No Image Avaliable"
             />
           </router-link>
           <div class="row">
-            <p class="lead indented">{{ desc }}</p>
+            <p class="lead text-light mt-4 indented">{{ desc }}</p>
           </div>
         </div>
       </div>
@@ -41,7 +41,7 @@
           bg-danger
           rounded-2
           p-3
-          pt-4
+          pt-3
         "
         >Ostale vesti</router-link
       >

@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="bg-pattern">
     <SecondaryHeader />
     <div class="container">
-      <h1 class="mt-5 mb-3">Daily Photo</h1>
+      <h1 class="mt-5 mb-3 display-2 text-light">Daily Photo</h1>
       <div class="row d-flex">
         <ul class="p-0 mt-5 list-unstyled">
           <div class="d-flex flex-wrap">

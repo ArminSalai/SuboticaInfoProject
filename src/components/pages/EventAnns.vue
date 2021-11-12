@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="bg-pattern">
     <SecondaryHeader />
     <div class="container mt-5">
-      <h1>Najava Događaja</h1>
+      <h1 class="py-3 display-2 text-light">Najava Događaja</h1>
       <u class="list-unstyled text-decoration-none">
         <DayItem
           v-for="movie in moives"

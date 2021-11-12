@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="bg-pattern text-light">
     <SecondaryHeader class="mb-5" />
-    <div class="container-fluid w-75">
+    <div class="container">
       <img
         v-if="image !== ''"
         :src="image"
@@ -9,13 +9,13 @@
         alt="No Image Provided"
       />
       <br />
-      <span class="badge bg-danger text-light rounded-pill my-3"
-        ><p class="m-0 pt-1 px-3">{{ category }}</p></span
+      <span class="badge bg-danger text-light rounded-pill my-4"
+        ><p class="m-0 py-1 px-3">{{ category }}</p></span
       >
-      <h1>{{ title }}</h1>
+      <h1 class="display-2">{{ title }}</h1>
       <p class="text-danger">{{ date }}</p>
-      <hr />
-      <p class="lead indented">
+      <hr class="bg-light my-4"/>
+      <p class="lead indented my-5 py-4">
         {{ desc }}
       </p>
       <div id="gallery"></div>
@@ -32,8 +32,8 @@
         Fotograf: <span class="fw-light">{{ fotograf }}</span>
       </p>
     </div>
-    <div class="container-fluid w-75">
-      <form @submit.prevent class="bg-dark text-light p-3 pb-5">
+    <div class="container-fluid w-75 my-5">
+      <form @submit.prevent class="text-light p-3 pb-5">
         <div class="row">
           <div class="col-2"></div>
           <div class="col-8">
@@ -53,7 +53,7 @@
           </div>
         </div>
       </form>
-      <ul class="bg-dark list-unstyled">
+      <ul class="list-unstyled">
         <CommentItem
           v-for="comm in comments"
           :key="comm.id"

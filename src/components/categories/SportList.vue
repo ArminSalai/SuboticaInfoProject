@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div class="bg-pattern">
     <SecondaryHeader />
     <div class="container">
-      <h1 class="mt-5 mb-3">Sport</h1>
+      <h1 class="mt-5 mb-3 display-2 text-light">Sport</h1>
       <div class="row d-flex flex-row">
-        <ul class="p-0 mt-5 list-unstyled">
+        <ul class="p-0 mt-2 list-unstyled">
           <ResultItem
             v-for="article in articles"
             :key="article.Nid"

@@ -1,24 +1,25 @@
 <template>
-  <div>
-    <SecondaryHeader class="mb-5" />
-    <div class="container-fluid w-75">
-      <img :src="image" class="img-fluid w-25 m-auto" alt="No Image Provided" />
-      <br />
-      <span class="badge bg-danger text-light rounded-pill my-3"
-        ><p class="m-0 pt-1 px-3">{{ category }}</p></span
-      >
-      <h1>{{ title }}</h1>
-      <p class="text-dark">Početak Događaja: {{ date }}</p>
-      <hr />
-      <p class="lead indented">
-        {{ desc }}
-      </p>
-      <p class="fw-bold mt-3">
-        Mesto Održavanja: <span class="fw-light">{{ place }}</span>
-      </p>
-    </div>
-    <TheFooter />
-  </div>
+	<div class="bg-pattern">
+		<SecondaryHeader class="mb-5" />
+		<div class="container">
+			<img :src="image" class="img-fluid w-50 m-auto" alt="No Image Provided" />
+			<br />
+			<span class="badge bg-danger text-light rounded-pill my-4"
+				><p class="m-0 py-1 px-3">{{ category }}</p></span
+			>
+			<h1 class="display-2 my-3 text-light">{{ title }}</h1>
+			<p class="text-light mb-4">Početak Događaja: {{ date }}</p>
+			<hr />
+			<p class="lead indented text-light">
+				{{ desc }}
+			</p>
+			<p class="fw-bold mt-5 text-light">
+				Mesto Održavanja: <span class="fw-light">{{ place }}</span>
+			</p>
+		</div>
+    <div class="space"></div>
+		<TheFooter />
+	</div>
 </template>
 
 <script>
@@ -29,43 +30,64 @@ import SecondaryHeader from "../UI/SecondaryHeader.vue";
 import TheFooter from "../UI/TheFooter.vue";
 
 export default {
-  components: {
-    SecondaryHeader,
-    TheFooter,
-  },
-  setup() {
-    const store = useStore();
-    const route = useRoute();
+	components: {
+		SecondaryHeader,
+		TheFooter,
+	},
+	setup() {
+		const store = useStore();
+		const route = useRoute();
 
-    async function getArticle() {
-      await store.dispatch("setNajavaDetails", route.params.Nid);
-    }
+		async function getArticle() {
+			await store.dispatch("setNajavaDetails", route.params.Nid);
+		}
 
-    const article = computed(() => {
-      return store.getters.getNajava[0];
-    });
+		const article = computed(() => {
+			return store.getters.getNajava[0];
+		});
 
-    const title = computed(() => article.value.Naslov);
-    const category = computed(() => article.value["Vrsta dogadjaja"]);
-    const desc = computed(() => article.value["Sadrzaj clanka"]);
-    const image = computed(() => article.value["Vodeca slika"]);
-    const date = computed(() => article.value["Pocetak dogadjaja"]);
-    const tagovi = computed(() => article.value.Tagovi);
-    const place = computed(() => article.value["Mesto odrzavanja"]);
+		const title = computed(() => {
+			if (article.value == undefined) return null;
+			else return article.value.Naslov;
+		});
+		const date = computed(() => {
+			if (article.value == undefined) return null;
+			else return article.value["Pocetak dogadjaja"];
+		});
+		const desc = computed(() => {
+			if (article.value == undefined) return null;
+			else return article.value["Sadrzaj clanka"];
+		});
+		const image = computed(() => {
+			if (article.value == undefined) return null;
+			else return article.value["Vodeca slika"];
+		});
+		const tagovi = computed(() => {
+			if (article.value == undefined) return null;
+			else return article.value.Tagovi;
+		});
+		const category = computed(() => {
+			if (article.value == undefined) return null;
+			else return article.value["Vrsta dogadjaja"];
+		});
+		const place = computed(() => {
+			if (article.value == undefined) return null;
+			else return article.value["Mesto odrzavanja"];
+		});
 
-    onMounted(async function () {
-      await getArticle();
-    });
+		onMounted(async function () {
+			await getArticle();
+		});
 
-    return {
-      category,
-      title,
-      desc,
-      image,
-      date,
-      tagovi,
-      place,
-    };
-  },
+		return {
+			category,
+			title,
+			desc,
+			image,
+			date,
+			tagovi,
+			place,
+		};
+	},
 };
 </script>

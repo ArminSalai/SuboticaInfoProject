@@ -4,7 +4,7 @@
       <router-link
         :to="'/daily/details/' + index"
         @click="savePage"
-        class="text-decoration-none text-secondary"
+        class="text-decoration-none text-light"
         >{{ title }}</router-link
       >
       - {{ date }}

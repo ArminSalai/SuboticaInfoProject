@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div class="bg-pattern fill-page">
     <SecondaryHeader />
     <div class="container">
-      <h1 class="mt-5 mb-3">Press</h1>
+      <h1 class="mt-5 mb-4 display-2 text-light">Press</h1>
       <div class="d-flex mt-2">
-        <label class="lead">Kategorija:</label>
+        <label class="lead text-light">Kategorija:</label>
         <div class="dropdown ms-3">
           <button
             class="btn btn-light border-secondary dropdown-toggle"
