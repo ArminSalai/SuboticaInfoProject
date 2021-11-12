@@ -22,6 +22,7 @@
         <h3 v-if="articles.length == 0" class="mt-4">No Results Found</h3>
         <ul v-else class="p-0 mt-5 list-unstyled">
           <ResultItem
+            data-aos="fade-up"
             v-for="article in articles"
             :key="article.Nid"
             :index="article.Nid"
@@ -43,6 +44,8 @@ import TheFooter from "../UI/TheFooter.vue";
 import ResultItem from "../results/ResultItem.vue";
 import { useStore } from "vuex";
 import { ref, onMounted, computed } from "vue";
+import AOS from "aos";
+import "aos/dist/aos.js";
 
 export default {
   components: {
@@ -77,5 +80,8 @@ export default {
       articles,
     };
   },
+  created() {
+    AOS.init();
+  }
 };
 </script>

@@ -25,6 +25,7 @@
 <script>
 import { useStore } from "vuex";
 import { useRoute } from "vue-router";
+import { gsap } from 'gsap';
 import { onMounted, computed } from "vue";
 import SecondaryHeader from "../UI/SecondaryHeader.vue";
 import TheFooter from "../UI/TheFooter.vue";
@@ -77,6 +78,12 @@ export default {
 
 		onMounted(async function () {
 			await getArticle();
+      gsap.from(".display-2", {
+        delay: 0.2,
+        filter: 'blur(10px)',
+        duration: 0.5,
+				scale: 4,
+			});
 		});
 
 		return {

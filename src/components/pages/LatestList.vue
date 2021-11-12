@@ -5,6 +5,7 @@
       <div class="container">
         <ul class="list-unstyled mt-5">
           <ResultItem
+            data-aos="fade-right"
             v-for="latestItem in news"
             :key="latestItem.Nid"
             :index="latestItem.Nid"
@@ -66,6 +67,8 @@ import { useStore } from "vuex";
 import { ref, computed, onMounted } from "vue";
 import { gsap } from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import AOS from "aos";
+import "aos/dist/aos.js";
 
 export default {
   components: {
@@ -156,5 +159,8 @@ export default {
       disabledLast
     };
   },
+  created() {
+    AOS.init();
+  }
 };
 </script>

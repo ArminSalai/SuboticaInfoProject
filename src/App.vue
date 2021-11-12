@@ -32,12 +32,12 @@ export default {
 
 .fade-enter-active,
 .fade-leave-active {
-	transition: opacity 0.2s ease-out;
+	transition: filter 0.1s;
 }
 
 .fade-enter-from,
 .fade-leave-to {
-	opacity: 0;
+	filter: blur(2px);
 }
 
 .bg-news-title {

@@ -19,9 +19,20 @@
 		<div class="space"></div>
 		<section class="bg-darker text-light">
 			<div class="container">
-        <div class="space"></div>
-				<div v-if="loadedZajednica" class="row justify-content-center">
-					<router-link to="/kategorija/zajednica/sve" class="col-lg-5 col-12 text-light text-decoration-none"><h2 class="display-2 m-0 pt-5 text-lg-center text-left">Zajednica</h2></router-link>
+				<div class="space"></div>
+				<div
+					data-aos="fade-right"
+					data-aos-anchor-placement="center-center"
+					v-if="loadedZajednica"
+					class="row justify-content-center"
+				>
+					<router-link
+						to="/kategorija/zajednica/sve"
+						class="col-lg-5 col-12 text-light text-decoration-none"
+						><h2 class="display-2 m-0 pt-5 text-lg-center text-left">
+							Zajednica
+						</h2></router-link
+					>
 					<div class="col-lg-7 col-12 mt-5 position-relative">
 						<router-link :to="'/details/' + zajednica.Nid"
 							><img
@@ -56,8 +67,19 @@
 					<span class="visually-hidden">Loading...</span>
 				</div>
 				<hr class="my-5 mx-3 bg-light" />
-				<div v-if="loadedSport" class="row justify-content-center">
-					<router-link to="/sport" class="col-lg-5 col-12 text-light text-decoration-none"><h2 class="display-2 m-0 pt-5 text-lg-center text-left">Sport</h2></router-link>
+				<div
+					data-aos="fade-right"
+					data-aos-anchor-placement="center-center"
+					v-if="loadedSport"
+					class="row justify-content-center"
+				>
+					<router-link
+						to="/sport"
+						class="col-lg-5 col-12 text-light text-decoration-none"
+						><h2 class="display-2 m-0 pt-5 text-lg-center text-left">
+							Sport
+						</h2></router-link
+					>
 					<div class="col-lg-7 col-12 mt-5 position-relative">
 						<router-link :to="'/details/' + sport.Nid">
 							<img
@@ -92,8 +114,19 @@
 					<span class="visually-hidden">Loading...</span>
 				</div>
 				<hr class="my-5 mx-3 bg-light" />
-				<div v-if="loadedKultura" class="row justify-content-center pb-5">
-					<router-link to="/kultura" class="col-lg-5 col-12 text-light text-decoration-none"><h2 class="display-2 m-0 pt-5 text-lg-center text-left">Kultura</h2></router-link>
+				<div
+					data-aos="fade-right"
+					data-aos-anchor-placement="center-center"
+					v-if="loadedKultura"
+					class="row justify-content-center pb-5"
+				>
+					<router-link
+						to="/kultura"
+						class="col-lg-5 col-12 text-light text-decoration-none"
+						><h2 class="display-2 m-0 pt-5 text-lg-center text-left">
+							Kultura
+						</h2></router-link
+					>
 					<div class="col-lg-7 col-12 my-5 position-relative">
 						<router-link :to="'/details/' + kultura.Nid">
 							<img
@@ -128,13 +161,17 @@
 					<span class="visually-hidden">Loading...</span>
 				</div>
 			</div>
-      <div class="space"></div>
+			<div class="space"></div>
 		</section>
 		<section>
 			<div class="container py-5 my-3">
 				<h2 class="display-2 mb-5 text-light">Ostale Kategorije</h2>
 				<div class="row">
-					<div class="col-lg-4 auto-border border-secondary p-4">
+					<div
+						data-aos="fade-down"
+						data-aos-anchor-placement="bottom-center"
+						class="col-lg-4 auto-border border-secondary p-4"
+					>
 						<router-link
 							class="text-decoration-none"
 							to="/kategorija/privreda/sve"
@@ -143,7 +180,12 @@
 							<h4 class="text-light fw-lighter">{{ Privreda }}</h4>
 						</router-link>
 					</div>
-					<div class="col-lg-4 auto-border border-secondary p-4">
+					<div
+						data-aos="fade-down"
+						data-aos-delay="400"
+						data-aos-anchor-placement="bottom-center"
+						class="col-lg-4 auto-border border-secondary p-4"
+					>
 						<router-link
 							class="text-decoration-none"
 							to="/kategorija/press/sve"
@@ -152,7 +194,12 @@
 							<h4 class="text-light fw-lighter">{{ Press }}</h4>
 						</router-link>
 					</div>
-					<div class="col-lg-4 p-4">
+					<div
+						data-aos="fade-down"
+						data-aos-delay="800"
+						data-aos-anchor-placement="bottom-center"
+						class="col-lg-4 p-4"
+					>
 						<router-link
 							class="text-decoration-none"
 							to="/kategorija/intervju/sve"
@@ -175,6 +222,8 @@ import shortenDesc from "../hooks/shortenDesc.js";
 import CarouselMain from "../carousel/CarouselMain.vue";
 import { useStore } from "vuex";
 import { ref, computed, onMounted } from "vue";
+import AOS from "aos";
+import "aos/dist/aos.js";
 
 export default {
 	components: {
@@ -282,6 +331,10 @@ export default {
 			Press,
 			Intervju,
 		};
+	},
+
+	created() {
+		AOS.init();
 	},
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-	<li class="border-bottom border-secondary p-3 my-3">
+	<li class="border-bottom border-secondary p-3 my-3 li">
 		<div class="row py-4">
 			<div class="col-lg-7 col-12">
 				<router-link :to="'/details/' + index"

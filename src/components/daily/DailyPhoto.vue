@@ -7,6 +7,7 @@
         <ul class="p-0 mt-5 list-unstyled">
           <div class="d-flex flex-wrap">
             <PhotoItem
+              data-aos="zoom-in-up"
               v-for="article in articles"
               :key="article.Nid"
               :index="article.Nid"
@@ -29,6 +30,8 @@ import { useStore } from "vuex";
 import { ref, computed, onMounted, onBeforeUnmount } from "vue";
 import { gsap } from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import AOS from 'aos';
+import 'aos/dist/aos.js';
 
 export default {
   components: {
@@ -72,5 +75,9 @@ export default {
       load,
     };
   },
+
+  created() {
+    AOS.init();
+  }
 };
 </script>

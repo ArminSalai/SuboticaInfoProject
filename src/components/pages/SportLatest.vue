@@ -23,6 +23,7 @@
       </div>
       <ul class="list-unstyled p-0 mt-5">
         <CategoryItem
+          data-aos="fade-left"
           v-for="sport in sports"
           :key="sport.Nid"
           :index="sport.Nid"
@@ -57,6 +58,8 @@ import shortenDesc from "../hooks/shortenDesc.js";
 import CategoryItem from "../categories/CategoryItem.vue";
 import { computed, onMounted } from "vue";
 import { useStore } from "vuex";
+import AOS from "aos";
+import "aos/dist/aos.js";
 
 export default {
   components: {
@@ -84,5 +87,8 @@ export default {
       desc,
     };
   },
+  created() {
+    AOS.init();
+  }
 };
 </script>
