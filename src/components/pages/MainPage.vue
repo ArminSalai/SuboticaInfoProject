@@ -320,6 +320,7 @@ export default {
 
     onMounted(async function () {
       store.dispatch("Reset");
+      AOS.init();
       await getLatestArticles();
       current.value = latestArticles.value.find(
         (node) => node.Nid == Math.max(node.Nid)
@@ -349,10 +350,6 @@ export default {
       Press,
       Intervju,
     };
-  },
-
-  created() {
-    AOS.init();
   },
 };
 </script>
