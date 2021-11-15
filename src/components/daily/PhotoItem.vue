@@ -1,6 +1,6 @@
 <template>
   <li class="p-3 my-3 size-pic">
-    <h6 class="fst-italic">
+    <h6 class="fst-italic h-38">
       <router-link
         :to="'/daily/details/' + index"
         @click="savePage"
@@ -43,27 +43,27 @@ export default {
 <style scoped>
 .size-pic {
   width: 25%;
-  height: 25%;
+}
+
+.h-38 {
+  height: 38px;
 }
 
 @media (max-width: 1199.98px) {
   .size-pic {
     width: 33%;
-    height: 33%;
   }
 }
 
 @media (max-width: 768px) {
   .size-pic {
     width: 50%;
-    height: 50%;
   }
 }
 
 @media (max-width: 576px) {
   .size-pic {
     width: 100%;
-    height: 100%;
   }
 }
 </style>

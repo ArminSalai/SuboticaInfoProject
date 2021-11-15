@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import { gsap } from 'gsap';
 import MainPage from '../src/components/pages/MainPage.vue';
-import ArticleDetails from '../src/components/article/ArticleDetails.vue';
 import SearchResults from '../src/components/pages/SearchResults.vue';
 import LatestList from '../src/components/pages/LatestList.vue';
 import SportLatest from '../src/components/pages/SportLatest.vue';
@@ -9,16 +8,11 @@ import KulturaLatest from '../src/components/pages/KulturaLatest.vue';
 import SportList from '../src/components/categories/SportList.vue';
 import CultureList from '../src/components/categories/CultureList.vue';
 import EventAnns from '../src/components/pages/EventAnns.vue';
-import RegisterPage from '../src/components/user-specific/RegisterPage.vue';
-import LoginPage from '../src/components/user-specific/LoginPage.vue';
-import MovieDetails from '../src/components/najava/MovieDetails.vue';
 import ZajednicaList from '../src/components/secondaryPages/ZajednicaList.vue';
 import PrivredaList from '../src/components/secondaryPages/PrivredaList.vue';
 import IntervjuList from '../src/components/intervju/IntervjuList.vue';
 import PressList from '../src/components/secondaryPages/PressList.vue';
 import DailyPhoto from '../src/components/daily/DailyPhoto.vue';
-import DailyDetails from '../src/components/daily/DailyDetails.vue';
-import IntervjuDetails from '../src/components/intervju/IntervjuDetails.vue';
 import ScrollToPlugin from "gsap/ScrollToPlugin";
 
 const router = createRouter({
@@ -30,7 +24,7 @@ const router = createRouter({
     },
     {
       path: '/details/:Nid',
-      component: ArticleDetails
+      component: () => import('../src/components/article/ArticleDetails.vue')
     },
     {
       path: '/search',
@@ -86,23 +80,23 @@ const router = createRouter({
     },
     {
       path: '/najava/details/:Nid',
-      component: MovieDetails
+      component: () => import('../src/components/najava/MovieDetails.vue')
     },
     {
       path: '/daily/details/:Nid',
-      component: DailyDetails
+      component: () => import('../src/components/daily/DailyDetails.vue')
     },
     {
       path: '/intervju/details/:Nid',
-      component: IntervjuDetails
+      component: () => import('../src/components/intervju/IntervjuDetails.vue')
     },
     {
       path: '/register',
-      component: RegisterPage
+      component: () => import('../src/components/user-specific/RegisterPage.vue')
     },
-    { 
+    {
       path: '/login',
-      component: LoginPage
+      component: () => import('../src/components/user-specific/LoginPage.vue')
     },
     {
       path: '/',

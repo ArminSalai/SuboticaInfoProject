@@ -24,6 +24,7 @@
 								src="../../assets/logo.png"
 								width="200"
 								height="62.8"
+								alt="logo image"
 						/></router-link>
 						<div class="d-flex align-items-center ms-auto">
 							<div class="d-flex max-cont">
@@ -55,6 +56,7 @@
 												"
 												type="submit"
 												id="button-addon2"
+												name="Search"
 											>
 												<i class="bi bi-search text-dark"></i>
 											</button>

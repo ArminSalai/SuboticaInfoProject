@@ -14,7 +14,7 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
 				<router-link to="/main" class="navbar-brand"
-					><img class="mt-3 mt-xl-0" src="../../assets/logo.png" width="200" height="62.8"
+					><img class="mt-3 mt-xl-0" src="../../assets/logo.png" width="200" height="62.8" alt="logo image"
 				/></router-link>
 				<ul class="navbar-nav ms-xl-5 ms-0 me-3 mb-lg-0 my-3 my-xl-0 fw-light">
 					<li class="nav-item">
@@ -95,6 +95,7 @@
 												"
 												type="submit"
 												id="button-addon2"
+												name="Search"
 											>
 												<i class="bi bi-search text-dark"></i>
 											</button>
