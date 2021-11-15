@@ -4,19 +4,17 @@
     <div class="container">
       <h1 class="mt-5 mb-3 display-2 text-light">Daily Photo</h1>
       <div class="row d-flex">
-        <ul class="p-0 mt-5 list-unstyled">
-          <div class="d-flex flex-wrap">
-            <PhotoItem
-              data-aos="zoom-in-up"
-              v-for="article in articles"
-              :key="article.Nid"
-              :index="article.Nid"
-              :title="article.Naslov"
-              :fullDesc="article['Sadrzaj clanka']"
-              :image="article['Vodeca slika']"
-              :date="article['Post date']"
-            />
-          </div>
+        <ul class="p-0 mt-5 list-unstyled d-flex flex-wrap">
+          <PhotoItem
+            data-aos="zoom-in-up"
+            v-for="article in articles"
+            :key="article.Nid"
+            :index="article.Nid"
+            :title="article.Naslov"
+            :fullDesc="article['Sadrzaj clanka']"
+            :image="article['Vodeca slika']"
+            :date="article['Post date']"
+          />
         </ul>
       </div>
     </div>
@@ -30,8 +28,8 @@ import { useStore } from "vuex";
 import { ref, computed, onMounted, onBeforeUnmount } from "vue";
 import { gsap } from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
-import AOS from 'aos';
-import 'aos/dist/aos.js';
+import AOS from "aos";
+import "aos/dist/aos.js";
 
 export default {
   components: {
@@ -78,6 +76,6 @@ export default {
 
   created() {
     AOS.init();
-  }
+  },
 };
 </script>

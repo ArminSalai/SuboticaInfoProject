@@ -14,6 +14,8 @@
         :src="image"
         class="w-100 rounded-2 listImg text-secondary"
         alt="No Image Provided"
+        width="300"
+        height="480"
     /></router-link>
   </li>
 </template>

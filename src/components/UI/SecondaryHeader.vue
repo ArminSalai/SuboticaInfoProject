@@ -7,7 +7,7 @@
 						class="navbar-toggler ms-auto"
 						type="button"
 						data-bs-toggle="collapse"
-						data-bs-target="#navbarTogglerDemo01"
+						data-bs-target=".navbarTogglerDemo01"
 						aria-controls="navbarTogglerDemo01"
 						aria-expanded="false"
 						aria-label="Toggle navigation"
@@ -16,13 +16,14 @@
 					</button>
 				</div>
 				<div>
-					<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+					<div class="collapse navbar-collapse navbarTogglerDemo01">
 						<div></div>
 						<router-link to="/main" class="navbar-brand"
 							><img
 								class="mt-3 mt-xl-0"
 								src="../../assets/logo.png"
 								width="200"
+								height="62.8"
 						/></router-link>
 						<div class="d-flex align-items-center ms-auto">
 							<div class="d-flex max-cont">
@@ -100,7 +101,7 @@
 				</div>
 				<div class="mt-lg-0 mt-3 pb-xl-2">
 					<hr class="bg-light mb-0" />
-					<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+					<div class="collapse navbar-collapse navbarTogglerDemo01">
 						<ul
 							class="
 								navbar-nav

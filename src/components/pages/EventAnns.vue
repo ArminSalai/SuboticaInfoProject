@@ -3,7 +3,7 @@
 		<SecondaryHeader />
 		<div class="container mt-5">
 			<h1 class="py-3 display-2 text-light">Najava Događaja</h1>
-			<u class="list-unstyled text-decoration-none">
+			<ul class="list-unstyled text-decoration-none">
 				<DayItem
 					data-aos="fade-right"
 					v-for="movie in moives"
@@ -15,7 +15,7 @@
 					:dateStart="movie['Pocetak dogadjaja']"
 					:dateEnd="movie['Kraj dogadjaja']"
 				/>
-			</u>
+			</ul>
 		</div>
 		<TheFooter />
 	</div>
