@@ -74,19 +74,17 @@ export default {
 		const passConfirm = ref("");
 		const username = ref("");
 
-		function RegisterUser() {
+		async function RegisterUser() {
 			if (
 				email.value.includes("@") &&
 				pass.value.length > 6 &&
 				pass.value == passConfirm.value &&
 				username.value.length <= 14
 			) {
-				store.dispatch("register", {
-					email: email.value,
-					password: pass.value,
-					username: username.value,
-				});
-				router.push("/main");
+				if( await store.dispatch("register", { email: email.value, password: pass.value, username: username.value }))
+				{
+					router.push("/main");
+				}
 			} else {
 				alert("Probajte ponovo sa valid imejl adresa i lozinka!");
 			}

@@ -66,8 +66,8 @@
 						>
 					</li>
 				</ul>
-				<div class="d-flex justify-content-center max-cont">
-					<form @submit.prevent="search" class="px-lg-0 px-3">
+				<div class="d-flex justify-content-start max-cont">
+					<form @submit.prevent="search" class="px-0">
 									<div class="d-flex w-50 mt-2 ms-xl-auto me-xl-4 ms-0">
 										<div
 											class="btn-group"

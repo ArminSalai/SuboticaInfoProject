@@ -1,10 +1,10 @@
 <template>
   <li class="border-bottom border-secondary p-3 py-5 my-3">
     <div class="row">
-      <div class="col-md-3 col-5">
+      <div class="col-lg-3 col-md-5 col-12">
         <router-link :to="'/intervju/details/' + index" @click="savePage"><img :src="image" class="w-100 rounded-2 listImg" alt="No Image Provided" /></router-link>
       </div>
-      <div class="col-md-7 col-7 d-flex flex-column">
+      <div class="col-lg-7 col-md-7 col-12 d-flex flex-column mt-lg-0 mt-5">
         <h3><router-link :to="'/intervju/details/' + index" @click="savePage" class="text-decoration-none text-light">{{ title }}</router-link></h3>
         <p class="flex-fill text-secondary">{{ desc }}</p>
         <p class="mb-0 text-danger">{{ date }}</p>

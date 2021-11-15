@@ -1,5 +1,5 @@
 <template>
-  <li class="mt-3">
+  <li class="mt-3 overflow-hidden">
     <h3 class="bg-dark pt-3 pb-3 text-light ps-4 mb-4">{{ dateStart }}</h3>
     <router-link :to="'/najava/details/' + index" class="text-decoration-none text-light h2 py-4">{{ title }}</router-link><br/>
     <router-link :to="'/najava/details/' + index"><img :src="image" alt="No Image Available" class="listImg my-3" /></router-link>

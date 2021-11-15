@@ -18,10 +18,10 @@
         </p>
       </div>
       <div class="col d-flex flex-column justify-content-center">
-        <div class="likeButton mb-2" alt="like" :class="liked?'bg-danger' : ''" @click="likeComment"></div>
-        <p class="likeText" :class="liked?'text-danger' : 'text-light'" v-if="likeCount">{{ likeCount }}</p>
-        <div class="dislikeButton" alt="like" :class="disliked?'bg-danger' : ''" @click="dislikeComment"></div>
-        <p class="likeText" :class="disliked?'text-danger' : 'text-light'" v-if="dislikeCount">
+        <div class="likeButton mb-2" alt="like" :class="liked?'bg-info' : ''" @click="likeComment"></div>
+        <p class="likeText" :class="liked?'text-info' : 'text-light'" v-if="likeCount">{{ likeCount }}</p>
+        <div class="dislikeButton" alt="like" :class="disliked?'bg-info' : ''" @click="dislikeComment"></div>
+        <p class="likeText" :class="disliked?'text-info' : 'text-light'" v-if="dislikeCount">
           {{ dislikeCount }}
         </p>
       </div>

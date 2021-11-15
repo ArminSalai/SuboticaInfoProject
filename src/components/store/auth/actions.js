@@ -11,6 +11,12 @@ export default {
             })
         });
 
+        if (!response.ok) {
+            alert("Probajte ponovo sa valid imejlom adresom i lozinkom!");
+            const error = new Error(data.message || 'Failed to load');
+            throw error;
+        }
+
         const data = await response.json();
 
         const additional = await fetch('https://subotica-info-5ee5a-default-rtdb.europe-west1.firebasedatabase.app/users.json', {
@@ -39,13 +45,6 @@ export default {
 
         const UserName = additionalData[userKey].username;
 
-        if (!response.ok) {
-            console.log(data);
-            alert("Probajte ponovo sa valid imejl adresa i lozinka!");
-            const error = new Error(data.message || 'Failed to load');
-            throw error;
-        }
-
         const expiresIn = +data.expiresIn * 1000;
         const expirationDate = new Date().getTime() + expiresIn;
 
@@ -63,6 +62,8 @@ export default {
             userId: data.localId,
             userName: UserName
         })
+
+        return true;
     },
 
     async login(context, payload) {
@@ -74,6 +75,12 @@ export default {
                 returnSecureToken: true
             })
         });
+
+        if (!response.ok) {
+            alert('Pogresno korisničko ime ili lozinka');
+            const error = new Error(data.message || 'Failed to load');
+            throw error;
+        }
 
         const data = await response.json();
 
@@ -89,12 +96,6 @@ export default {
 
         const UserName = additionalData[userKey].username;
 
-        if (!response.ok) {
-            console.log(data);
-            const error = new Error(data.message || 'Failed to load');
-            throw error;
-        }
-
         const expiresIn = +data.expiresIn * 1000;
         const expirationDate = new Date().getTime() + expiresIn;
 
@@ -111,7 +112,9 @@ export default {
             token: data.idToken,
             userId: data.localId,
             userName: UserName
-        })
+        });
+
+        return true;
     },
 
     autoLogin(context) {
